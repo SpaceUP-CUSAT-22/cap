@@ -36,6 +36,10 @@ const UserSchema = new Schema({
         default: []
     }]
     },
+  points: {
+    type: Number,
+    default: 0,
+    },
 });
 
 const User = models.User || model("User", UserSchema);

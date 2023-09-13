@@ -21,6 +21,11 @@ const TaskSchema = new Schema({
     expirationDate: {
         type: Date,
     },
+    points: {
+        type: Number,
+        required: [true, 'Points is required.'],
+        min: [1, 'Points must be greater than 0.'],
+    },
     completed: {
         type: [Schema.Types.ObjectId],
         ref: 'User',

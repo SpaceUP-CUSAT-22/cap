@@ -4,9 +4,28 @@ import Task from '@models/task';
 import { connectToDB } from '@utils/database';
 import User from '@models/user';
 
+
+export const GET = async (request, { params }) => {
+    try {
+        await connectToDB();
+
+        //fetch all tasks
+        const tasks = await Task.find({});
+
+        if (!tasks) {
+            return new Response('Task not found', { status: 404 });
+        }
+
+        return new Response(JSON.stringify(tasks), { status: 200 });
+    } catch (error) {
+        return new Response('Failed to fetch task', { status: 500 });
+    }
+}
+
 export const POST = async (request) => {
 
     const body = await request.json();
+
   try {
     await connectToDB();
 
