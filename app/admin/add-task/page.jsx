@@ -126,7 +126,7 @@ const AddTask = () => {
     };
 
     return (
-        <div className="w-full max-w-md mx-auto">
+        <div className="w-full mx-auto px-10 py-10">
             <h2 className="text-2xl font-semibold mb-4">Add Task</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
