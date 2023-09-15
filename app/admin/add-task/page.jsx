@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react'
 import {useRouter} from 'next/navigation';
+import axios from 'axios'
 
 const AddTask = () => {
 
@@ -96,15 +97,8 @@ const AddTask = () => {
         setFileError('');
 
         try {
-            const response = await fetch(`/api/tasks`, {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            if (response.ok) {
+            const response = await axios.post('/api/admin/tasks', formData)
+            if (response) {
                 alert('Task added successfully!');
                 setFormData({
                     ...formData,

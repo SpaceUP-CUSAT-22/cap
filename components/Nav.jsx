@@ -18,10 +18,6 @@ const Nav = () => {
     })();
   }, []);
 
-  useEffect(() => {
-    console.log(session)
-  }, [session])
-
   return (
     <nav className='flex-between w-full mb-16 pt-3'>
       <Link href='/' className='flex gap-2 flex-center'>
@@ -39,7 +35,7 @@ const Nav = () => {
       <div className='sm:flex hidden'>
         {session?.user ? (
           <div className='flex gap-3 md:gap-5'>
-            <Link href={session?.user.type == "admin" ? "/admin" : '/dashboard'} className='black_btn'>
+            <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='black_btn'>
                 Dashboard
             </Link>
 
@@ -99,7 +95,7 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
-                  href={session?.user.type == "admin" ? "/admin" : '/dashboard'}
+                  href={session?.user.type == "admin" ? "/admin" : '/cap'}
                   className='dropdown_link'
                   onClick={() => setToggleDropdown(false)}
                 >

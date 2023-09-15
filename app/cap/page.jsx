@@ -10,8 +10,8 @@ const Home = () => {
 
 
   React.useEffect(() => {
-    if(session.user.type == "user"){
-      window.location.replace('/cap')
+    if(session?.user.type == "admin"){
+      window.location.replace('/admin')
     }
   }, [session])
 
