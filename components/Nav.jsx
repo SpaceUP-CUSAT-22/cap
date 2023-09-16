@@ -4,12 +4,48 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import {AiOutlineClose } from "react-icons/ai";
+
+
+const navLinks = [
+  {
+    id: "Home",
+    title: "Home",
+  },
+  {
+    id: "Leaderboard",
+    title: "Leaderboard",
+  },
+  {
+    id: "Contact",
+    title: "Contact",
+  },
+];
 
 const Nav = () => {
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const [active, setActive] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -19,121 +55,173 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className='flex-between w-full mb-16 pt-3'>
-      <Link href='/' className='flex gap-2 flex-center'>
-        <Image
-          src='/assets/images/logo.png'
-          alt='logo'
-          width={30}
-          height={30}
-          className='object-contain'
-        />
-        <p className='logo_text'>CAP</p>
-      </Link>
+  <nav className={`sm:px-8 px-4 w-full flex items-center py-1 fixed top-0 z-20 ${scrolled ? "bg-primary" : "bg-transparent"}`}>
+      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+        <div className="flex flex-row">
+          <Image
+            src='/assets/images/logo.png'
+            alt='logo'
+            width={100}
+            height={100}
+            className='object-contain'
+          />
+        </div>
 
-      {/* Desktop Navigation */}
-      <div className='sm:flex hidden'>
-        {session?.user ? (
-          <div className='flex gap-3 md:gap-5'>
-            <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='black_btn'>
+
+        <ul className="list-none hidden  sm:flex flex-row items-center gap-10">
+          {navLinks.map((nav) => (
+            <li
+              key={nav.id}
+              className={`${active === nav.title ? "text-white" : "text-secondary"
+                } hover:text-white text-[18px] font-medium cursor-pointer`}
+              onClick={() => setActive(nav.title)}
+            >
+              <a href={`#${nav.id}`}>{nav.title}</a>
+            </li>
+          ))}
+          {session?.user ? (
+            <div className='flex gap-3 md:gap-5'>
+              <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='black_btn'>
                 Dashboard
-            </Link>
+              </Link>
 
-            <button type='button' onClick={signOut} className='outline_btn'>
-              Sign Out
-            </button>
+              <button type='button' onClick={signOut} className='outline_btn'>
+                Sign Out
+              </button>
 
-            <Link href='/profile'>
+              <Link href='/profile'>
+                <Image
+                  src={session?.user.image}
+                  width={37}
+                  height={37}
+                  className='rounded-full'
+                  alt='profile'
+                />
+              </Link>
+            </div>
+          ) : (
+            <>
+              {providers &&
+                Object.values(providers).map((provider) => (
+                  <button
+                    type='button'
+                    key={provider.name}
+                    onClick={() => {
+                      signIn(provider.id);
+                    }}
+                    className='black_btn'
+                  >
+                    Sign in
+                  </button>
+
+                ))}
+            </>
+          )}
+        </ul>
+
+
+        {/* Mobile Navigation */}
+
+        <div className='sm:hidden flex relative'>
+          {session?.user ? (
+            <div className='flex'>
               <Image
                 src={session?.user.image}
                 width={37}
                 height={37}
                 className='rounded-full'
                 alt='profile'
+                onClick={() => setToggleDropdown(!toggleDropdown)}
               />
-            </Link>
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className='black_btn'
-                >
-                  Sign in
-                </button>
-              ))}
-          </>
-        )}
-      </div>
 
-      {/* Mobile Navigation */}
-      <div className='sm:hidden flex relative'>
-        {session?.user ? (
-          <div className='flex'>
-            <Image
-              src={session?.user.image}
-              width={37}
-              height={37}
-              className='rounded-full'
-              alt='profile'
-              onClick={() => setToggleDropdown(!toggleDropdown)}
-            />
-
-            {toggleDropdown && (
-              <div className='dropdown'>
-                <Link
-                  href='/profile'
-                  className='dropdown_link'
-                  onClick={() => setToggleDropdown(false)}
-                >
-                  My Profile
-                </Link>
-                <Link
-                  href={session?.user.type == "admin" ? "/admin" : '/cap'}
-                  className='dropdown_link'
-                  onClick={() => setToggleDropdown(false)}
-                >
+              {toggleDropdown && (
+                <div className='dropdown'>
+                  <Link
+                    href='/profile'
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}
+                  >
+                    My Profile
+                  </Link>
+                  <Link
+                    href={session?.user.type == "admin" ? "/admin" : '/cap'}
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}
+                  >
                     Dashboard
-                </Link>
-                <button
-                  type='button'
-                  onClick={() => {
-                    setToggleDropdown(false);
-                    signOut();
-                  }}
-                  className='mt-5 w-full black_btn'
-                >
-                  Sign Out
-                </button>
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type='button'
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className='black_btn'
-                >
-                  Sign in
-                </button>
-              ))}
-          </>
-        )}
+                  </Link>
+                  <button
+                    type='button'
+                    onClick={() => {
+                      setToggleDropdown(false);
+                      signOut();
+                    }}
+                    className='mt-5  black_btn'
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              {providers &&
+                Object.values(providers).map((provider) => (
+                  <div className="sm:hidden flex flex-1 gap-3 justify-end items-center">
+                    <button
+                      type='button'
+                      key={provider.name}
+                      onClick={() => {
+                        signIn(provider.id);
+                      }}
+                      className='black_btn'
+                    >
+                      Sign in
+                    </button>
+
+                    {toggle ?
+                      <AiOutlineClose
+                        style={{ color: "#fff" }}
+                        className='w-[28px] h-[28px] object-contain'
+                        onClick={() => setToggle(!toggle)} />
+                      :
+                      <GiHamburgerMenu
+                        style={{ color: "#fff" }}
+                        className='w-[28px] h-[28px] object-contain'
+                        onClick={() => setToggle(!toggle)} />}
+
+                    <div
+                      className={`${!toggle ? "hidden" : "flex"
+                        } p-6 black-gradient  absolute top-5 bg-primary right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+                    >
+                      <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
+                        {navLinks.map((nav) => (
+                          <li
+                            key={nav.id}
+                            className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-secondary"
+                              }`}
+                            onClick={() => {
+                              setToggle(!toggle);
+                              setActive(nav.title);
+                            }}
+                          >
+                            <a href={`#${nav.id}`}>{nav.title}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+            </>
+          )}
+        </div>
+
       </div>
     </nav>
   );
 };
+
+
+
 
 export default Nav;
