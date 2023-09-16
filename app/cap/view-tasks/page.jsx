@@ -23,10 +23,6 @@ const ViewTasks = () => {
     fetchTasks()
   }, [])
 
-  React.useEffect(() => {
-    console.log(session)
-  }, [session])
-
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) {
@@ -51,7 +47,7 @@ const ViewTasks = () => {
     try{
       const res = await axios.post('/api/users/task', {task, session, fileData})
       if(res){
-        console.log(res)
+        window.location.reload()
       }
     }catch(err){
       console.log(err)
