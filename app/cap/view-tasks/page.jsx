@@ -11,6 +11,40 @@ const ViewTasks = () => {
     console.log(res)
   }, [])
 
+<<<<<<< HEAD
+=======
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+        return;
+    }
+
+    const allowedFileTypes = ['image/jpeg', 'image/png', 'video/mp4', 'application/pdf'];
+    if (!allowedFileTypes.includes(file.type)) {
+        setFileError('File type not supported. Please select an image, video, or PDF.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        const base64Data = event.target.result;
+        setFileData(base64Data);
+    };
+    reader.readAsDataURL(file);
+};
+
+  const handleSubmit = async(task) => {
+    try{
+      const res = await axios.post('/api/users/task', {task, session, fileData})
+      if(res){
+        window.location.reload()
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+>>>>>>> 2ebbd0f (points backendand frontend)
   return (
     <div className='grid grid-cols-1 px-10 py-10'>
         <div className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>

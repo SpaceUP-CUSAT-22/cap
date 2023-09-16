@@ -25,16 +25,26 @@ const UserSchema = new Schema({
   },
   //tasks which is completed and  pending
     tasks: {
-    completed: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Task',
-        default: []
-    }],
-    pending: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Task',
-        default: []
-    }]
+      completed: [{
+          type: Schema.Types.ObjectId,
+          ref: 'Task',
+          default: []
+      }],
+      pending: [{
+          type: Schema.Types.ObjectId,
+          ref: 'Task',
+          default: []
+      }],
+      attachments: [
+        {
+          attachment: String,
+          id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Task'
+          },
+          default: [{}]
+        },
+      ]
     },
   points: {
     type: Number,
