@@ -7,10 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
-    fontFamily: {
+      fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
-      }
+        poppins: ['Poppins', 'sans-serif'],
+      },
+      colors: {
+        primary: "#050816",
+        secondary: "#aaa6c3",
+        tertiary: "#151030",
+        "black-100": "#100d25",
+        "black-200": "#090325",
+        "white-100": "#f3f3f3",
+      },
+      backgroundImage: {
+        "hero-pattern": "url('/assets/images/herobg.png')",
+      },
     },
   },
   plugins: [

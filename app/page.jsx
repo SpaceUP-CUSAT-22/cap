@@ -1,7 +1,14 @@
-
+import Timeline from "@components/Timeline";
+import Footer from "@components/Footer";
+import Eligibility from "@components/Eligibility";
+import Card from "@components/Card";
 const Home = () => (
-  <div className='w-full flex-center flex-col'>
-        Home
+  <div>
+        <Timeline />
+        <Card />
+        <Eligibility />
+        
+        <Footer />
   </div>
 );
 
