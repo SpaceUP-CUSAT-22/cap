@@ -41,8 +41,8 @@ const AssignScores = () => {
       }
     }
 
-    fetchTasks()
     fetchUsers()
+    fetchTasks()
   }, [])
 
   const handleSubmit = async(id) => {
