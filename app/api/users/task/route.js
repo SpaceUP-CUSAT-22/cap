@@ -4,11 +4,16 @@ import User from '@models/user';
 
 //api end point to set the task as completed by the user
 export const POST = async (request, { params }) => {
+    const body = await request.json();
+    const taskData = body.task
+    const userData = body.session.user
+    const fileData = body.fileData
     try {
         await connectToDB();
+        console.log(body)
 
         const task = await Task.findOne({
-            _id: params.id,
+            _id: taskData._id,
         });
 
         if (!task) {
@@ -16,50 +21,62 @@ export const POST = async (request, { params }) => {
         }
 
         const user = await User.findOne({
-            _id: request.user._id,
+            _id: userData.id,
         })
+
+        if (!user) {
+            return new Response('User not found', { status: 404 });
+        }
 
         // remove task from users pending tasks
         await User.updateOne(
             {
-                _id: user._id,
+                _id: userData.id,
             },
             {
                 $pull: {
-                    'tasks.pending': task._id,
+                    'tasks.pending': taskData._id,
                 },
             });
 
         // add task to users completed tasks
         await User.updateOne(
             {
-                _id: user._id,
+                id: userData.id,
             },
             {
                 $push: {
-                    'tasks.completed': task._id,
+                    'tasks.completed': taskData._id,
+                    'tasks.attachments': {
+                        attachment: fileData,
+                        id: taskData._id
+                    }
                 }
             })
 
         // remove user from tasks pending
         await Task.updateOne(
             {
-                _id: task._id,
+                _id: taskData._id,
             },
             {
                 $pull: {
-                    pending: user._id,
+                    pending: userData.id
                 }
             })
 
         // add user to tasks completed
            await Task.updateOne(
             {
-                _id: task._id,
+                _id: taskData._id,
             },
             {
                 $push: {
-                    completed: user._id,
+                    completed: userData.id,
+                    attachments: {
+                        attachment: fileData,
+                        id: userData.id
+                    }
                 }
             })
 
