@@ -1,15 +1,18 @@
-import Timeline from "@components/Timeline";
+// import Timeline from "@components/Timeline";
 import Footer from "@components/Footer";
 import Eligibility from "@components/Eligibility";
 import Card from "@components/Card";
+import Provider from "@components/Provider";
+import Nav from "@components/Nav";
 const Home = () => (
-  <div>
-        <Timeline />
+  <Provider>
+        <Nav />
+        {/* <Timeline /> */}
         <Card />
         <Eligibility />
         
         <Footer />
-  </div>
+  </Provider>
 );
 
 export default Home;
