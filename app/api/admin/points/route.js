@@ -6,7 +6,7 @@ export const POST = async(request) => {
     const body = await request.json()
     try{
         await connectToDB();
-        const user = await User.findOne({ _id: body.session.user.id });
+        const user = await User.findOne({ _id: body.id });
         if (!user) {
             return new Response("User not found", { status: 404 });
         }

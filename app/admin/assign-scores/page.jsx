@@ -8,6 +8,17 @@ const AssignScores = () => {
   const { data: session } = useSession()
   const [tasks, setTasks] = React.useState([])
   const [points, setPoints] = React.useState(0)
+  const [users, setUsers] = React.useState([])
+
+
+  React.useEffect(() => {
+    console.log('triggered')
+    console.log(session)
+    if(session){
+      console.log('triggered1')
+      console.log(session)
+    }
+  }, [session])
 
   React.useEffect(() => {
     const fetchTasks = async() => {
@@ -20,7 +31,18 @@ const AssignScores = () => {
       }
     }
 
+    const fetchUsers = async() => {
+      try {
+        const res = await axios.get('/api/users')
+        setUsers(res.data)
+        console.log(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     fetchTasks()
+    fetchUsers()
   }, [])
 
   const handleSubmit = async(id) => {
@@ -48,19 +70,21 @@ const AssignScores = () => {
             </div>
             <div className='my-10'>
                 <h1 className='text-3xl font-bold my-5'>Submissions</h1>
-                {task.attachments.map(data =>
-                    <div className='my-10'>
-                        <h3 className='text-lg font-bold'>{data.id}</h3>
-                        <Image src={data.attachment} width="200" height="200" alt="image" className='my-5' />
-                        <div className='flex'>
-                            <input onChange={(e) => setPoints(e.target.value)} type="number" className='pl-3 py-3 rounded-[15px] border-1 mr-3' name="" placeholder="Enter points" id="" />
-                            <button onClick={() => handleSubmit(data.id)} className='bg-green-500 text-white rounded-[15px] px-5 py-3'>Submit</button>
-                        </div>
-                    </div>
-                )}
+                <div className='grid grid-cols-3 gap-5 my-10'>
+                  {task.attachments?.map(data =>
+                      <div className='mr-10'>
+                          <h3 className='text-lg font-bold'>{users.find(user => user._id == data.id)?.name}</h3>
+                          <Image src={data.attachment} width="200" height="200" alt="image" className='my-5' />
+                          <div className='flex'>
+                              <input onChange={(e) => setPoints(e.target.value)} type="number" className='pl-3 py-3 rounded-[15px] border-1 mr-3' name="" placeholder="Enter points" id="" />
+                              <button onClick={() => handleSubmit(data.id)} className='bg-green-500 text-white rounded-[15px] px-5 py-3'>Submit</button>
+                          </div>
+                      </div>
+                  )}
+                </div>
             </div>
-        </div>
-      )}
+          </div>
+        )}
     </div>
   )
 }
