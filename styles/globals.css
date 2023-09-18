@@ -168,3 +168,22 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+@keyframes bounce-slow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px); /* Adjust the bounce height */
+  }
+
+  60% {
+    transform: translateY(-5px); /* Adjust the bounce height */
+  }
+}
+
+/* Customize the animation duration */
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite; /* Adjust the duration (e.g., 2s) */
+}

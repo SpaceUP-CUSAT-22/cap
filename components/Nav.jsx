@@ -90,7 +90,9 @@ const Nav = () => {
                 Dashboard
               </Link>
 
-              <button type='button' onClick={signOut} className='outline_btn'>
+              <button type='button' onClick={signOut} 
+                    className='black_btn'
+                    >
                 Sign Out
               </button>
 
