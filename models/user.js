@@ -9,6 +9,23 @@ const UserSchema = new Schema({
   name: {
     type: String,
     required: [true, "Name is required!"],
+    default: ""
+  },
+  phone: {
+    type: Number,
+    default: 0
+  },
+  uni: {
+    type: String,
+    default: ""
+  },
+  branch: {
+    type: String,
+    default: ""
+  },
+  yog: {
+    type: String,
+    default: ""
   },
   username: {
     type: String,
@@ -25,16 +42,26 @@ const UserSchema = new Schema({
   },
   //tasks which is completed and  pending
     tasks: {
-    completed: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Task',
-        default: []
-    }],
-    pending: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Task',
-        default: []
-    }]
+      completed: [{
+          type: Schema.Types.ObjectId,
+          ref: 'Task',
+          default: []
+      }],
+      pending: [{
+          type: Schema.Types.ObjectId,
+          ref: 'Task',
+          default: []
+      }],
+      attachments: [
+        {
+          attachment: String,
+          id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Task'
+          },
+          default: [{}]
+        },
+      ]
     },
   points: {
     type: Number,
@@ -42,6 +69,6 @@ const UserSchema = new Schema({
     },
 });
 
-const User = models.User || model("User", UserSchema);
+const User = model("User", UserSchema);
 
 export default User;

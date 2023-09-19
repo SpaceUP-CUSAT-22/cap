@@ -35,7 +35,17 @@ const TaskSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: 'User',
         default: []
-    }
+    },
+    attachments: [
+      {
+        attachment: String,
+        id: {
+          type: Schema.Types.ObjectId,
+          ref: 'User'
+        },
+        default: [{}]
+      },
+    ]
 })
 
 const Task = models.Task || model('Task', TaskSchema)

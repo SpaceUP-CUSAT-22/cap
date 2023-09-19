@@ -1,7 +1,7 @@
 import "@styles/globals.css";
 
-import Nav from "@components/Nav";
-import Landing from "@components/Landing";
+// import Nav from "@components/Nav";
+// import Landing from "@components/Landing";
 import Provider from "@components/Provider";
 
 export const metadata = {
@@ -14,8 +14,8 @@ const RootLayout = ({ children }) => (
     <body className='bg-hero-pattern bg-cover bg-primary w-full'>
       <Provider>
         <main>
-          <Nav />
-          <Landing />
+          {/* <Nav /> */}
+          {/* <Landing /> */}
           {children}
         </main>
       </Provider>
