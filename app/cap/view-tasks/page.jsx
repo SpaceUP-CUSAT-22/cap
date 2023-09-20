@@ -56,7 +56,7 @@ const ViewTasks = () => {
 
   return (
     <div className='grid grid-cols-1 px-10 py-10'>
-        {tasks && session?.user.id && tasks.map(task => 
+        {(tasks && session?.user.id)? tasks.map(task => 
           <div className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
             <div className="flex justify-between">
                 <h1 className="text-xl font-bold">{task.name}</h1>
@@ -82,7 +82,7 @@ const ViewTasks = () => {
               }
             </div>
         </div>
-      )}
+      ) : <h1 className='text-center text-4xl text-black'>No tasks found!</h1>}
     </div>
   )
 }
