@@ -20,10 +20,12 @@ export const POST = async (request, { params }) => {
             return new Response('Task not found', { status: 404 });
         }
 
+        
         const user = await User.findOne({
             _id: userData.id,
         })
-
+        
+        console.log(userData.id, user)
         if (!user) {
             return new Response('User not found', { status: 404 });
         }
@@ -42,7 +44,7 @@ export const POST = async (request, { params }) => {
         // add task to users completed tasks
         await User.updateOne(
             {
-                id: userData.id,
+                _id: userData.id,
             },
             {
                 $push: {

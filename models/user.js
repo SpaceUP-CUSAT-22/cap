@@ -9,6 +9,23 @@ const UserSchema = new Schema({
   name: {
     type: String,
     required: [true, "Name is required!"],
+    default: ""
+  },
+  phone: {
+    type: Number,
+    default: 0
+  },
+  uni: {
+    type: String,
+    default: ""
+  },
+  branch: {
+    type: String,
+    default: ""
+  },
+  yog: {
+    type: String,
+    default: ""
   },
   username: {
     type: String,
@@ -52,6 +69,6 @@ const UserSchema = new Schema({
     },
 });
 
-const User = models.User || model("User", UserSchema);
+const User = model("User", UserSchema);
 
 export default User;
