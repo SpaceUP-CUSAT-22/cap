@@ -1,5 +1,5 @@
-// import Timeline from "@components/Timeline";
 "use client"
+// import Timeline from "@components/Timeline";
 import React from "react";
 import Footer from "@components/Footer";
 import Eligibility from "@components/Eligibility";
@@ -20,9 +20,11 @@ const Home = () => {
     const fetchUsers = async() => {
       try {
         if(session){
-          const res = await axios.get(`/api/users/${session?.user?.id}`)
-          if(!res.data.phone){
+          const res = await axios.get(`/api/users/${session.user?.id}`)
+          if(res.data && res.data?.phone != ""){
             setPhone(false)
+          }else{
+            console.log(res.data.phone)
           }
         }
       } catch (error) {

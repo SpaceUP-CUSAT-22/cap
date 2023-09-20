@@ -3,6 +3,8 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import Image from 'next/image';
+import space from "../public/assets/images/space suit.png";
 
 const Landing = () => {
     const { data: session } = useSession();
@@ -17,7 +19,7 @@ const Landing = () => {
 
 
     return (
-        <div className='flex flex-col md:flex-row'>
+        <div className='flex md:flex-row flex-col h-full w-full'>
             <div className='w-screen w-full md:w-1/2 h-screen flex flex-col justify-center pl-16 sm:pl-12 md:pl-36'>
                 <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
                     CAMPUS AMBASSADOR
@@ -45,8 +47,9 @@ const Landing = () => {
                 )}
             </div>
 
-            <div className='w-1/2'></div>
-
+            <div className='w-full md:w-1/2 flex justify-center items-center top-[25%] md:top-0 md:right-0 absolute md:relative'>
+                <Image src={space} alt='landing' width={500} height={500} className=' floating z-[-1] items-center static md:top-[10px] md:top-[0]' />
+            </div>
         </div>
     )
 }
