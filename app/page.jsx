@@ -21,7 +21,7 @@ const Home = () => {
       try {
         if(session){
           const res = await axios.get(`/api/users/${session.user?.id}`)
-          if(res.data && res.data.phone){
+          if(res.data && res.data?.phone != ""){
             setPhone(false)
           }else{
             console.log(res.data.phone)
