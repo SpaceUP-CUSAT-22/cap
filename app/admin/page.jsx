@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import AddTask from './add-task/page';
 
 
 const Home = () => {
@@ -22,8 +23,8 @@ const Home = () => {
   }
 
   return (
-    <div onClick={handleCount} className='w-full flex-center flex-col'>
-      Home
+    <div onClick={handleCount}>
+      <AddTask />
     </div>
   );
 };
