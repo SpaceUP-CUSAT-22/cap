@@ -12,6 +12,7 @@ import axios from 'axios'
 import Landing from "@components/Landing";
 
 
+
 const Home = () => {
   const { data: session } = useSession()
   const [phone, setPhone] = React.useState(true)
@@ -21,7 +22,8 @@ const Home = () => {
       try {
         if(session){
           const res = await axios.get(`/api/users/${session.user?.id}`)
-          if(res.data && res.data?.phone != ""){
+          console.log(res.data?.phone)
+          if(res.data && (res.data?.phone == "" || res.data?.phone == 0)){
             setPhone(false)
           }else{
             console.log(res.data.phone)

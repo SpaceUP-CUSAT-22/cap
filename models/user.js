@@ -12,8 +12,8 @@ const UserSchema = new Schema({
     default: ""
   },
   phone: {
-    type: Number,
-    default: 0
+    type: String,
+    default: ""
   },
   uni: {
     type: String,
@@ -69,6 +69,6 @@ const UserSchema = new Schema({
     },
 });
 
-const User = model("User", UserSchema);
+const User = models.User || model("User", UserSchema);
 
 export default User;
