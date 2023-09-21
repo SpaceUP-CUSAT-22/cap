@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-row gap-x-1">
               <BiLogoTwitter size={21}/>
-              <Link href="https://twitter.com/CusatSeds" className="text-gray-300">Twitter</Link>
+              <Link href="https://twitter.com/spaceupcusat" className="text-gray-300">Twitter</Link>
             </div>
           </div>
         </div>
