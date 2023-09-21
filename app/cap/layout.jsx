@@ -13,7 +13,7 @@ const AddCAPLayout = ({ children }) => (
       <main className=''>
         <div className="grid grid-cols-6">
           <Sidebar />
-          <div className="col-span-5 py-10">
+          <div className="md:col-span-5 col-span-6 py-10">
             {children}
           </div>
         </div>
