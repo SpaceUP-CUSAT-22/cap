@@ -45,6 +45,10 @@ const ViewTasks = () => {
 
   const handleSubmit = async(task) => {
     try{
+      if(!fileData){
+        window.alert('Please upload a file')
+        return
+      }
       const res = await axios.post('/api/users/task', {task, session, fileData})
       if(res){
         window.location.reload()
@@ -60,7 +64,7 @@ const ViewTasks = () => {
           <div className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
             <div className="flex justify-between">
                 <h1 className="text-xl font-bold">{task.name}</h1>
-                <h3 className='text-lg font-bold'><b>Exp Date:</b> {task.expirationDate}</h3>
+                <h3 className='text-lg font-bold'><b>Exp Date:</b> {new Date(task.expirationDate).toLocaleDateString('en-GB')}</h3>
             </div>
             <div className="my-10">
                 <p>{task.description}</p>
