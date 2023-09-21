@@ -20,6 +20,7 @@ import {
     InboxIcon,
     PowerIcon,
   } from "@heroicons/react/24/solid";
+import {signOut} from 'next-auth/react'
    
 const Sidebar = () => {
     return (
@@ -51,7 +52,10 @@ const Sidebar = () => {
               Assign scores
             </Link>
           </ListItem>
-          <ListItem className="text-white text-xl my-5 hover:bg-red-500 px-3 py-3">
+          <ListItem onClick={() => {
+            signOut()
+            window.location.replace('/')
+          }} className="text-white text-xl my-5 hover:bg-red-500 px-3 py-3">
             Log Out
           </ListItem>
         </List>

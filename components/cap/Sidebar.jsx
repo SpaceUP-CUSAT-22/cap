@@ -21,6 +21,8 @@ import {
     PowerIcon,
   } from "@heroicons/react/24/solid";
    
+import {signOut} from 'next-auth/react'
+
 const Sidebar = () => {
     return (
       <Card className="bg-black !rounded-[0px] col-span-1 h-screen w-full  p-4 shadow-xl shadow-blue-gray-900/5">
@@ -46,7 +48,10 @@ const Sidebar = () => {
                 Help
             </Link>
           </ListItem>
-          <ListItem className="text-white text-xl my-5 hover:bg-red-500 px-3 py-3">
+          <ListItem onClick={() => {
+            signOut()
+            window.location.replace('/')
+          }} className="text-white text-xl my-5 hover:bg-red-500 px-3 py-3">
             Log Out
           </ListItem>
         </List>
