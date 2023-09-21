@@ -57,7 +57,7 @@ const Nav = () => {
   return (
   <nav className={`sm:px-8 px-4 w-full flex items-center py-1 fixed top-0 z-20 ${scrolled ? "bg-primary" : "bg-transparent"}`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <div className="flex flex-row">
+        <Link href="/" className="flex flex-row">
           <Image
             src='/assets/images/logo.png'
             alt='logo'
@@ -65,7 +65,7 @@ const Nav = () => {
             height={100}
             className='object-contain'
           />
-        </div>
+        </Link>
 
 
         <ul className="list-none hidden  sm:flex flex-row items-center gap-10">
@@ -91,7 +91,7 @@ const Nav = () => {
                 Sign Out
               </button>
 
-              <Link href='/profile'>
+              <Link href={`/profile/${session?.user.id}`}>
                 <Image
                   src={session?.user.image}
                   width={37}
@@ -139,7 +139,7 @@ const Nav = () => {
               {toggleDropdown && (
                 <div className='dropdown'>
                   <Link
-                    href='/profile'
+                    href={`/profile/${session?.user.id}`}
                     className='dropdown_link'
                     onClick={() => setToggleDropdown(false)}
                   >
@@ -207,7 +207,7 @@ const Nav = () => {
                               setActive(nav.title);
                             }}
                           >
-                            <a href={`#${nav.id}`}>{nav.title}</a>
+                            <Link href={`#${nav.id}`}>{nav.title}</Link>
                           </li>
                         ))}
                       </ul>

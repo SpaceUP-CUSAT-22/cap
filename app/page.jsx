@@ -1,5 +1,5 @@
 "use client"
-// import Timeline from "@components/Timeline";
+import Timeline from "@components/Timeline";
 import React from "react";
 import Footer from "@components/Footer";
 import Eligibility from "@components/Eligibility";
@@ -42,7 +42,7 @@ const Home = () => {
         <>
           <Nav />
           <Landing />
-          {/* <Timeline /> */}
+          <Timeline />
           <Card />
           <Eligibility />
           
