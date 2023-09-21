@@ -23,8 +23,11 @@ import {
    
 const Sidebar = () => {
     return (
-      <Card className="bg-black col-span-1 h-screen w-full  p-4 shadow-xl shadow-blue-gray-900/5">
+      <Card className="bg-black !rounded-[0px] col-span-1 h-screen w-full  p-4 shadow-xl shadow-blue-gray-900/5">
         <div className="mb-2 p-4">
+          <Link href="/" className='mb-10 bg-blue-800 hover:bg-blue-500 text-white px-3 py-2 rounded-[5px] text-center'>
+            Back
+          </Link>
           <div className="flex justify-center">
             <Image src={logo} width="250" height="250" />
           </div>

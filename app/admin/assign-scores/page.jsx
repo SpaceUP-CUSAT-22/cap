@@ -58,7 +58,7 @@ const AssignScores = () => {
 
   return (
     <div className='grid grid-cols-1 px-10 py-10'>
-        {tasks && session?.user.id && tasks.map(task => 
+        {(tasks && tasks.length > 0 && session?.user.id) ? tasks.map(task => task.points != 0 &&
           <div className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
             <div className="flex justify-between">
                 <h1 className="text-xl font-bold">{task.name}</h1>
@@ -71,7 +71,7 @@ const AssignScores = () => {
             <div className='my-10'>
                 <h1 className='text-3xl font-bold my-5'>Submissions</h1>
                 <div className='grid grid-cols-3 gap-5 my-10'>
-                  {task.attachments?.map(data =>
+                  {task.attachments?.map(data => !task.completed.includes(data.id) &&
                       <div className='mr-10'>
                           <h3 className='text-lg font-bold'>{users.find(user => user._id == data.id)?.name}</h3>
                           <Image src={data.attachment} width="200" height="200" alt="image" className='my-5' />
@@ -84,7 +84,10 @@ const AssignScores = () => {
                 </div>
             </div>
           </div>
-        )}
+        )
+        :
+        <h1 className='text-center text-4xl text-black'>No tasks been submitted yet!</h1>
+        }
     </div>
   )
 }

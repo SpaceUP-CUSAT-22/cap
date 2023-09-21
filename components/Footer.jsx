@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { BiLogoFacebookCircle ,BiLogoTwitter , BiLogoInstagram } from 'react-icons/bi';
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -23,15 +24,15 @@ const Footer = () => {
             <p className="text-lg font-medium tracking-wider ">SOCIAL</p>
             <div className="flex flex-row gap-x-1">
               <BiLogoFacebookCircle size={21}/>
-              <a href="#" className="text-gray-300 ">Facebook</a>
+              <Link href="https://www.facebook.com/SedsCusatIrescusat/" className="text-gray-300 ">Facebook</Link>
             </div>
             <div className="flex flex-row gap-x-1 ">
               <BiLogoInstagram size={21}/>
-              <a href="#" className="text-gray-300">Instagram</a>
+              <Link href="https://www.instagram.com/spaceupcusat/" className="text-gray-300">Instagram</Link>
             </div>
             <div className="flex flex-row gap-x-1">
               <BiLogoTwitter size={21}/>
-              <a href="#" className="text-gray-300">Twitter</a>
+              <Link href="https://twitter.com/CusatSeds" className="text-gray-300">Twitter</Link>
             </div>
           </div>
         </div>
