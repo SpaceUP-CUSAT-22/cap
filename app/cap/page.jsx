@@ -1,9 +1,10 @@
 "use client";
 import React, {Fragment} from 'react';
 import {signIn, signOut, useSession, getProviders} from "next-auth/react";
-import ViewTasks from './view-tasks/page';
 import Image from "@node_modules/next/image";
-import {red} from "@node_modules/@mui/material/colors";
+import Tasks from "@/components/Dashboard/User/Tasks";
+import Referrals from "@/components/Dashboard/User/Referrals";
+
 
 
 const Home = () => {
@@ -27,8 +28,8 @@ const Home = () => {
 
     return (<Fragment>
             <div className="flex h-screen">
-                <div className="flex m-auto bg-[#151515] w-1/3  rounded-2xl p-10">
-                    <div id="right" className="flex flex-col  items-center px-10 w-full">
+                <div className="flex m-auto bg-[#151515] w-full rounded-2xl p-10 mx-[10vmax]">
+                    <div id="right" className="flex flex-col  items-center px-1 w-1/4">
                         <div className={"bg-[#272727] rounded-full p-3 m-2"}>
                             <Image src={"/assets/icons/phone.png"}
                                    alt={"phone"}
@@ -43,26 +44,27 @@ const Home = () => {
                         </div>
 
                         <div onClick={() => setActive("tasks")}
-                            className={`${active === "tasks" ? "bg-gray-600" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
+                            className={`${active === "tasks" ? "bg-gray-800" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
                             Tasks
                         </div>
 
                         <div onClick={() => setActive("referrals")}
-                             className={`${active === "referrals" ? "bg-gray-600" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
+                             className={`${active === "referrals" ? "bg-gray-800" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
                             Referrals
                         </div>
 
-                        <div onClick={() => setActive("logout")}
+                        <div onClick={() => console.log("logout")}
                             className="text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-red-900 ease-in-out">
                             Logout
                         </div>
-
                     </div>
 
+                    <div className="border border-gray-500"></div>
 
-                    <div id="left" className="bg-red-700">
-                        left
+                    <div id="left" className="w-3/4 p-5">
+                        {active === "tasks" ? <Tasks /> : <Referrals />}
                     </div>
+
                 </div>
             </div>
         </Fragment>);
