@@ -13,9 +13,23 @@ const SelectedCard = ({handleClose}) => {
         AOS.init();
     });
 
+   const  handleShareClick = () => {
+        // Define the image URL and caption text
+        const imageUrl = "URL_OF_YOUR_IMAGE";
+        const captionText = "Your caption text here";
+
+        // Create the WhatsApp share URL
+        const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
+            captionText
+        )}&image=${encodeURIComponent(imageUrl)}`;
+
+        // Open the WhatsApp share URL in a new window or tab
+        window.open(whatsappUrl);
+    };
+
     return (
         <Fragment>
-            <div data-aos="fade-up" data-aos-duration="400" className="flex flex-col w-full p-3">
+            <div data-aos="fade-up" data-aos-duration="400" className="container flex flex-col w-full px-3 pt-3 h-96 overflow-y-auto overscroll-y-none">
                 <div className="flex flex-row justify-between items-center">
                     <h1 className="font-bold text-3xl text-white">Task Name</h1>
                     <p className="text-white bg-amber-900 rounded-2xl px-4">0 Points</p>
@@ -36,7 +50,9 @@ const SelectedCard = ({handleClose}) => {
                             <Image className="rounded-3xl p-3  py-1 ease-in-out hover:bg-gray-900 hover:border cursor-pointer"
                                    src={"/assets/icons/download.png"} alt={"download"}
                                    width={50} height={50} />
-                            <div className="flex items-center hover:border cursor-pointer hover:bg-gray-900 ease-in-out rounded-3xl">
+                            <div className="flex items-center hover:border cursor-pointer hover:bg-gray-900 ease-in-out rounded-3xl"
+                                    onClick={handleShareClick}
+                            >
                                 <Image onMouseEnter={() => setShowShareText(true)}
                                        onMouseLeave={() => setShowShareText(false)}
                                        className=" z-10 p-3  py-1"
@@ -52,6 +68,31 @@ const SelectedCard = ({handleClose}) => {
                         </div>
 
                     </div>
+                </div>
+
+                <div className="border border-gray-500 rounded-[30px] p-3">
+                    <h1 className="text-white font-bold text-[1.5rem]">Upload Your Submission</h1>
+                    <div class="relative w-1/4 pt-5">
+                        <label htmlFor="file-upload" className="px-4 py-2 bg-gray-700 text-white rounded-lg cursor-pointer hover:bg-blue-600 transition duration-300">
+                            Upload File
+                        </label>
+                        <input
+                            id="file-upload"
+                            accept=".jpeg, .jpg, .png, .mp4, .pdf"
+                            type="file"
+                            className="absolute inset-0 opacity-0 cursor-pointer"
+                        />
+                    </div>
+
+                    <div className="flex justify-between items-center w-full">
+                        <input type="text" name="description" placeholder="Add remarks about the submission"
+                               className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 my-5 w-5/6"/>
+                        <button  className=" text-white  rounded-[15px] bg-gray-900 border-2 p-3 py-5 w-1/6 ease-in-out active:scale-90 "
+                                 type={"button"} >
+                            Submit</button>
+                    </div>
+
+
                 </div>
 
             </div>

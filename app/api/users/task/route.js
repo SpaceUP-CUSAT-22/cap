@@ -8,6 +8,7 @@ export const POST = async (request, { params }) => {
     const taskData = body.task
     const userData = body.session.user
     const fileData = body.fileData
+    const description = body.description
     try {
         await connectToDB();
         console.log(body)
@@ -20,11 +21,11 @@ export const POST = async (request, { params }) => {
             return new Response('Task not found', { status: 404 });
         }
 
-        
+
         const user = await User.findOne({
             _id: userData.id,
         })
-        
+
         console.log(userData.id, user)
         if (!user) {
             return new Response('User not found', { status: 404 });
@@ -51,6 +52,7 @@ export const POST = async (request, { params }) => {
                     'tasks.completed': taskData._id,
                     'tasks.attachments': {
                         attachment: fileData,
+                        description: description || "",
                         id: taskData._id
                     }
                 }
