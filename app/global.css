@@ -6,3 +6,12 @@
   font-family: "SourceSans3";
     src: url("../fonts/SourceSans3.ttf");
 }
+
+
+.container::-webkit-scrollbar {
+  width: 0.1rem;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.2);
+}
