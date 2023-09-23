@@ -11,6 +11,8 @@ module.exports = {
         satoshi: ['Satoshi', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        // source: ["var(--font-source)"],
+        abs: ['SourceSans3', 'sans-serif'],
       },
       colors: {
         primary: "#050816",
@@ -21,7 +23,7 @@ module.exports = {
         "white-100": "#f3f3f3",
       },
       backgroundImage: {
-        "hero-pattern": "url('/assets/images/herobg.png')",
+        "hero-pattern": "url('/assets/images/herobg2.jpg')",
       },
     },
   },

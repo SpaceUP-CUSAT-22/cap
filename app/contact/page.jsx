@@ -12,7 +12,7 @@ const Page = props => {
                                width={40}
                                height={40}
                         />
-                        <h1 className="text-4xl font-bold text-white">&nbsp;Get in touch</h1>
+                        <h1 className="text-4xl text-white">&nbsp;Get in touch</h1>
                     </div>
 
                     <div className="flex flex-row p-3">

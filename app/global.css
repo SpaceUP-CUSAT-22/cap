@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "SourceSans3";
+    src: url("../fonts/SourceSans3.ttf");
+}

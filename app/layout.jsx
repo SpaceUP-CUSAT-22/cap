@@ -2,8 +2,18 @@
 // import Nav from "@components/Nav";
 // import Landing from "@components/Landing";
 import "@styles/globals.css";
+import "./global.css";
 import Provider from "@components/Provider";
 // import { SessionProvider } from "next-auth/react";
+import localfont from "next/font/local"
+
+
+
+const sourceReguler = localfont({
+    src: "../fonts/SourceSans3.ttf",
+    variable: "--font-source"
+});
+
 
 export const metadata = {
   title: "Space Up | Cusat",
@@ -12,7 +22,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang='en'>
-    <body className='bg-hero-pattern bg-cover bg-primary w-full'>
+    <body className={`${sourceReguler.variable} bg-hero-pattern bg-cover bg-primary w-full`}>
       {/*<SessionProvider>*/}
         <Provider>
           <main>

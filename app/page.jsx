@@ -33,19 +33,19 @@ const Home = () => {
         console.log(error)
       }
     }
-  
+
     fetchUsers()
   }, [session])
   return(
     <Provider>
-      {phone ? 
+      {phone ?
         <>
           <Nav />
           <Landing />
           <Timeline />
           <Card />
           <Eligibility />
-          
+
           <Footer />
         </>
         :
