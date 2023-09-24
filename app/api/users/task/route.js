@@ -5,6 +5,7 @@ import User from '@models/user';
 //api end point to set the task as completed by the user
 export const POST = async (request, { params }) => {
     const body = await request.json();
+    console.log(body)
     const taskData = body.task
     const userData = body.session.user
     const fileData = body.fileData
@@ -52,7 +53,7 @@ export const POST = async (request, { params }) => {
                     'tasks.completed': taskData._id,
                     'tasks.attachments': {
                         attachment: fileData,
-                        description: description || "",
+                        description: description ,
                         id: taskData._id
                     }
                 }
@@ -79,6 +80,7 @@ export const POST = async (request, { params }) => {
                     completed: userData.id,
                     attachments: {
                         attachment: fileData,
+                        description: description,
                         id: userData.id
                     }
                 }

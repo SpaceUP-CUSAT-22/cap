@@ -71,7 +71,7 @@ const Home = () => {
                         </div>
 
                         <div id="left" className="">
-                            {active === "tasks" ? <Tasks isMobile={isMobile}/> : <Referrals isMobile={isMobile}/>}
+                            {active === "tasks" ? <Tasks isMobile={isMobile} session={session}/> : <Referrals isMobile={isMobile}/>}
                         </div>
 
                     </div>
@@ -117,7 +117,7 @@ const Home = () => {
                         <div className="border border-gray-500"></div>
 
                         <div id="left" className="w-3/4 p-5 ">
-                            {active === "tasks" ? <Tasks/> : <Referrals/>}
+                            {active === "tasks" ? <Tasks session={session}/> : <Referrals/>}
                         </div>
 
                     </div>

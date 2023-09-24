@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import Card from "@components/Dashboard/User/Card";
 import SelectedCard from "@components/Dashboard/User/SelectedCard";
 
-const Tasks = ({isMobile}) => {
+const Tasks = ({isMobile, session}) => {
 
     const [isCardSelected, setIsCardSelected] = useState(false);
     const [tasks, setTasks] = useState([]);
@@ -54,7 +54,7 @@ const Tasks = ({isMobile}) => {
                     </div>
                     :
                     <div>
-                         <SelectedCard handleClose={handleCardDeselect} isMobile={isMobile} data={selectedTask}/>
+                         <SelectedCard handleClose={handleCardDeselect} isMobile={isMobile} data={selectedTask} session={session}/>
                     </div>
                 }
 
