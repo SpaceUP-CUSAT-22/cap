@@ -29,7 +29,6 @@ const RootLayout = ({ children }) => (
           <main>
               <Toaster
                   position="top-center"
-                  reverseOrder={true}
               />
             {/* <Nav /> */}
             {/* <Landing /> */}

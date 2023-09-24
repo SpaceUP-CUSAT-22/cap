@@ -19,7 +19,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
             top: 0,
             behavior: "smooth"
         });
-    }, []);
+    }, [isSubmitted]);
 
     const handleShareClick = () => {
         const imageUrl = "URL_OF_YOUR_IMAGE";
@@ -49,6 +49,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
     }
 
     const handleSubmit = async () => {
+        console.log(submissionData)
         if(!submissionData?.fileData){
             toast.error("Please upload a file")
             return
@@ -64,6 +65,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
             if(res.status == 200){
                 toast.success("Submitted successfully")
                 setIsSubmitted(true)
+                data.completed.push(session.user.id)
             } else {
                 toast.error("Something went wrong")
             }
@@ -140,9 +142,11 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
                                         value={submissionData?.fileData}
                                         onChange={(e) => setSubmissionData({
                                             ...submissionData,
-                                            fileData: e.target.value
+                                            fileData: e.target.value,
+                                            fileName: e.target.files[0].name
                                         })}
                                     />
+                                    <p className="text-gray-400">{submissionData?.fileName}</p>
                                 </div>
 
                                 <div className="flex justify-between items-center w-full">
@@ -231,9 +235,11 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
                                             value={submissionData?.fileData}
                                             onChange={(e) => setSubmissionData({
                                                 ...submissionData,
-                                                fileData: e.target.value
+                                                fileData: e.target.value,
+                                                fileName: e.target.files[0].name
                                             })}
                                         />
+                                        <p className="text-gray-400">{submissionData?.fileName}</p>
                                     </div>
 
                                     <div className="flex flex-col justify-between items-center">

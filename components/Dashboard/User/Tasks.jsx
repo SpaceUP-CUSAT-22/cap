@@ -57,9 +57,7 @@ const Tasks = ({isMobile, session}) => {
                          <SelectedCard handleClose={handleCardDeselect} isMobile={isMobile} data={selectedTask} session={session}/>
                     </div>
                 }
-
             </div>
-
         </Fragment>
     );
 };
