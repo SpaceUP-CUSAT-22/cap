@@ -14,7 +14,7 @@ const navLinks = [
     title: "Home",
   },
   {
-    id: "#Leaderboard",
+    id: "/leaderboard",
     title: "Leaderboard",
   },
   {

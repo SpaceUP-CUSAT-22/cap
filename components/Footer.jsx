@@ -8,17 +8,6 @@ const Footer = () => {
     return (
         <div className="bg-primary text-white py-6 ">
             <div className="w-full flex  gap-y-16 md:flex-row p-10 items-center ">
-
-
-                <div className="flex  flex-1">
-                    <ul className="flex flex-col mx-auto gap-y-2 text-center">
-                        <p className="text-lg font-medium tracking-wider ">INFORMATION</p>
-                        <li><a href="#" className="text-gray-300">HOME</a></li>
-                        <li><a href="#" className="text-gray-300">ABOUT</a></li>
-                        <li><a href="#" className="text-gray-300">TEAM</a></li>
-                    </ul>
-                </div>
-
                 <div className="flex flex-1">
                     <div className="flex flex-col mx-auto text-center gap-y-4 ">
                         <p className="text-lg font-medium tracking-wider ">SOCIAL</p>

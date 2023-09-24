@@ -23,7 +23,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang='en'>
-    <body className={`${sourceReguler.variable} bg-hero-pattern bg-cover bg-primary w-full`}>
+    <body className={`${sourceReguler.variable} bg-hero-pattern`} >
       {/*<SessionProvider>*/}
         <Provider>
           <main>
