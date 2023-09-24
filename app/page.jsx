@@ -10,6 +10,9 @@ import MoreDetails from "@components/MoreDetails";
 import { useSession } from 'next-auth/react'
 import axios from 'axios'
 import Landing from "@components/Landing";
+import Loader from "@components/Loader/Loader";
+import JoinNow from "@components/JoinNow";
+import About from "@components/About";
 
 
 
@@ -33,19 +36,23 @@ const Home = () => {
         console.log(error)
       }
     }
-  
+
     fetchUsers()
   }, [session])
   return(
     <Provider>
-      {phone ? 
+
+
+      {/*<Loader />*/}
+      {phone ?
         <>
           <Nav />
           <Landing />
           <Timeline />
           <Card />
           <Eligibility />
-          
+          <JoinNow />
+          <About />
           <Footer />
         </>
         :

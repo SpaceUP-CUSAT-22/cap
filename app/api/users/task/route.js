@@ -5,9 +5,11 @@ import User from '@models/user';
 //api end point to set the task as completed by the user
 export const POST = async (request, { params }) => {
     const body = await request.json();
+    console.log(body)
     const taskData = body.task
     const userData = body.session.user
     const fileData = body.fileData
+    const description = body.description
     try {
         await connectToDB();
         console.log(body)
@@ -20,11 +22,11 @@ export const POST = async (request, { params }) => {
             return new Response('Task not found', { status: 404 });
         }
 
-        
+
         const user = await User.findOne({
             _id: userData.id,
         })
-        
+
         console.log(userData.id, user)
         if (!user) {
             return new Response('User not found', { status: 404 });
@@ -51,6 +53,7 @@ export const POST = async (request, { params }) => {
                     'tasks.completed': taskData._id,
                     'tasks.attachments': {
                         attachment: fileData,
+                        description: description ,
                         id: taskData._id
                     }
                 }
@@ -77,6 +80,7 @@ export const POST = async (request, { params }) => {
                     completed: userData.id,
                     attachments: {
                         attachment: fileData,
+                        description: description,
                         id: userData.id
                     }
                 }

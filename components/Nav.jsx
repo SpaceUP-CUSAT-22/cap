@@ -10,15 +10,15 @@ import {AiOutlineClose } from "react-icons/ai";
 
 const navLinks = [
   {
-    id: "Home",
+    id: "/",
     title: "Home",
   },
   {
-    id: "Leaderboard",
+    id: "/leaderboard",
     title: "Leaderboard",
   },
   {
-    id: "Contact",
+    id: "/contact",
     title: "Contact",
   },
 ];
@@ -76,7 +76,7 @@ const Nav = () => {
                 } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              <Link href={`${nav.id}`}>{nav.title}</Link>
             </li>
           ))}
           {session?.user ? (
@@ -85,7 +85,7 @@ const Nav = () => {
                 Dashboard
               </Link>
 
-              <button type='button' onClick={signOut} 
+              <button type='button' onClick={signOut}
                     className='black_btn'
                     >
                 Sign Out

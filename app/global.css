@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "SourceSans3";
+    src: url("../fonts/SourceSans3.ttf");
+}
+
+
+.container::-webkit-scrollbar {
+  width: 0.1rem;
+  height: 0.4rem;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.2);
+}
