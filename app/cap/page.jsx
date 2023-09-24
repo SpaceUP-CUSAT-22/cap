@@ -68,7 +68,7 @@ const Home = () => {
                         </div>
 
                         <div id="left" className="">
-                            {active === "tasks" ? <Tasks isMobile={isMobile}/> : <Referrals/>}
+                            {active === "tasks" ? <Tasks isMobile={isMobile}/> : <Referrals isMobile={isMobile}/>}
                         </div>
 
                     </div>
