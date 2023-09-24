@@ -1,5 +1,5 @@
 "use client";
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {signIn, signOut, useSession, getProviders} from "next-auth/react";
 import Image from "@node_modules/next/image";
 import Tasks from "@/components/Dashboard/User/Tasks";
@@ -13,13 +13,14 @@ const Home = () => {
     const [active, setActive] = React.useState("tasks")
     const [isMobile, setIsMobile] = useState(false);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
-
+    const [user, setUser] = useState(null)
 
     React.useEffect(() => {
         if (window.innerWidth < 640)
             setIsMobile(true);
 
-        if (session?.user.type == "admin") {
+        console.log(session?.user)
+        if (session?.user?.type == "admin") {
             window.location.replace('/admin')
         }
     }, [session])
@@ -37,16 +38,18 @@ const Home = () => {
                 <div className="flex h-screen flex-col justify-center items-center m-5 mb-56">
                     <div className="flex flex-col justify-center items-center mt-56">
                         <div className={"bg-[#272727] rounded-full p-3 m-2"}>
-                            <Image src={"/assets/icons/phone.png"}
-                                   alt={"phone"}
-                                   width={100}
-                                   height={100}
+                            <Image
+                                src={session?.user.image}
+                                width={100}
+                                height={100}
+                                className='rounded-full'
+                                alt='profile'
                             />
                         </div>
-                        <p className="text-white font-bold py-1">Nayan Prasad P K</p>
-                        <p className="text-gray-400 py-1">nayanfapfasfd@gami.ocm</p>
+                        <p className="text-white font-bold py-1">{session?.user?.name}</p>
+                        <p className="text-gray-400 py-1">{session?.user?.email}</p>
                         <div className="bg-gray-500 rounded-2xl px-2 text-white py-1 mb-5 ">
-                            0 Points
+                            {session?.user?.points} Points
                         </div>
                     </div>
                     <div className="flex flex-col bg-[#151515] w-full rounded-2xl m-6">
@@ -78,46 +81,48 @@ const Home = () => {
 
             {!isMobile &&
                 <div className="flex h-screen ">
-                <div className="flex m-auto bg-[#151515] w-full rounded-2xl p-10 mx-[10vmax]">
-                <div id="right" className="flex flex-col  items-center px-1 w-1/4">
-                    <div className={"bg-[#272727] rounded-full p-3 m-2"}>
-                        <Image src={"/assets/icons/phone.png"}
-                               alt={"phone"}
-                               width={100}
-                               height={100}
-                        />
+                    <div className="flex m-auto bg-[#151515] w-full rounded-2xl p-10 mx-[10vmax]">
+                        <div id="right" className="flex flex-col  items-center px-1 w-1/4">
+                            <div className={"bg-[#272727] rounded-full p-2 m-2"}>
+                                <Image
+                                    src={session?.user.image}
+                                    width={100}
+                                    height={100}
+                                    className='rounded-full'
+                                    alt='profile'
+                                />
+                            </div>
+                            <p className="text-white font-bold py-1">{session?.user?.name}</p>
+                            <p className="text-gray-400 py-1 mx-2">{session?.user?.email}</p>
+                            <div className="bg-gray-500 rounded-2xl px-2 text-white py-1 mb-5 ">
+                                {session?.user?.points} Points
+                            </div>
+
+                            <div onClick={() => setActive("tasks")}
+                                 className={`${active === "tasks" ? "bg-gray-800" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
+                                Tasks
+                            </div>
+
+                            <div onClick={() => setActive("referrals")}
+                                 className={`${active === "referrals" ? "bg-gray-800" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
+                                Referrals
+                            </div>
+
+                            <div onClick={() => console.log("logout")}
+                                 className="text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-red-900 ease-in-out">
+                                Logout
+                            </div>
+                        </div>
+
+                        <div className="border border-gray-500"></div>
+
+                        <div id="left" className="w-3/4 p-5 ">
+                            {active === "tasks" ? <Tasks/> : <Referrals/>}
+                        </div>
+
                     </div>
-                    <p className="text-white font-bold py-1">Nayan Prasad P K</p>
-                    <p className="text-gray-400 py-1">nayanfapfasfd@gami.ocm</p>
-                    <div className="bg-gray-500 rounded-2xl px-2 text-white py-1 mb-5 ">
-                        0 Points
-                    </div>
-
-                    <div onClick={() => setActive("tasks")}
-                         className={`${active === "tasks" ? "bg-gray-800" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
-                        Tasks
-                    </div>
-
-                    <div onClick={() => setActive("referrals")}
-                         className={`${active === "referrals" ? "bg-gray-800" : ""} text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-gray-800 ease-in-out`}>
-                        Referrals
-                    </div>
-
-                    <div onClick={() => console.log("logout")}
-                         className="text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-red-900 ease-in-out">
-                        Logout
-                    </div>
-                </div>
-
-                <div className="border border-gray-500"></div>
-
-                <div id="left" className="w-3/4 p-5 ">
-                    {active === "tasks" ? <Tasks/> : <Referrals/>}
-                </div>
-
-            </div>
                 </div>}
-    </Fragment>);
+        </Fragment>);
 };
 
 export default Home;

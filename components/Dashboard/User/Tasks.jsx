@@ -5,9 +5,11 @@ import SelectedCard from "@components/Dashboard/User/SelectedCard";
 const Tasks = ({isMobile}) => {
 
     const [isCardSelected, setIsCardSelected] = useState(false);
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState([]);
+    const [selectedTask, setSelectedTask] = React.useState([]);
 
-    const handleCardSelect = () => {
+    const handleCardSelect = ({...task}) => {
+        setSelectedTask(task)
         setIsCardSelected(true)
     }
 
@@ -37,29 +39,22 @@ const Tasks = ({isMobile}) => {
                         <div className="border border-gray-500 px-0 mx-[-1px]"></div>
 
                         <div className={`container flex ${isMobile ? 'flex-row' : 'flex-wrap' } ${isMobile ? '' : 'items-center justify-center'} ${isMobile ? 'h-full' : 'h-96' } ${isMobile ? 'overflow-x-auto' : 'overflow-y-auto' }`}>
-                            <div className={`m-3`}><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
-                            {/*{tasks.map((task, i) => (*/}
-                            {/*    // <div className={`m-3 ${isMobile && i === 0 ? 'ml-[48rem]' : ''}`}>*/}
-                            {/*    <div className={`m-3 `}>*/}
-                            {/*        <Card handleClick={handleCardSelect}/>*/}
-                            {/*    </div>*/}
-                            {/*))}*/}
+                            {tasks?.map((task, i) => (
+                                <div className={`m-3`}>
+                                    <Card handleClick={() => handleCardSelect(task)}
+                                            name={task.name}
+                                            points={task.points}
+                                            status={task.status}
+                                            image={task.attachment}
+                                            description={task.description}
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
                     :
                     <div>
-                         <SelectedCard handleClose={handleCardDeselect} isMobile={isMobile}/>
+                         <SelectedCard handleClose={handleCardDeselect} isMobile={isMobile} data={selectedTask}/>
                     </div>
                 }
 
