@@ -1,10 +1,11 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import Card from "@components/Dashboard/User/Card";
 import SelectedCard from "@components/Dashboard/User/SelectedCard";
 
 const Tasks = ({isMobile}) => {
 
-    const [isCardSelected, setIsCardSelected] = useState(false)
+    const [isCardSelected, setIsCardSelected] = useState(false);
+    const [tasks, setTasks] = useState([])
 
     const handleCardSelect = () => {
         setIsCardSelected(true)
@@ -14,6 +15,19 @@ const Tasks = ({isMobile}) => {
         setIsCardSelected(false)
     }
 
+    useEffect(() => {
+        fetch("/api/admin/tasks")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setTasks(data)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }, []);
+
+
     return (
         <Fragment>
             <div className="flex flex-col">
@@ -22,12 +36,25 @@ const Tasks = ({isMobile}) => {
                         <h1 className="text-3xl font-bold text-white">Tasks</h1>
                         <div className="border border-gray-500 px-0 mx-[-1px]"></div>
 
-                        <div className={`container flex ${isMobile ? 'flex-row' : 'flex-wrap' } justify-center items-center ${isMobile ? 'h-full' : 'h-96' } ${isMobile ? 'overflow-x-auto' : 'overflow-y-auto' }`}>
-                            <div className={`m-3 ${isMobile ? 'ml-[48rem]' : ''}`}><Card handleClick={handleCardSelect}/></div>
+                        <div className={`container flex ${isMobile ? 'flex-row' : 'flex-wrap' } ${isMobile ? '' : 'items-center justify-center'} ${isMobile ? 'h-full' : 'h-96' } ${isMobile ? 'overflow-x-auto' : 'overflow-y-auto' }`}>
+                            <div className={`m-3`}><Card handleClick={handleCardSelect}/></div>
                             <div className="m-3"><Card handleClick={handleCardSelect}/></div>
                             <div className="m-3"><Card handleClick={handleCardSelect}/></div>
                             <div className="m-3"><Card handleClick={handleCardSelect}/></div>
                             <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            <div className="m-3"><Card handleClick={handleCardSelect}/></div>
+                            {/*{tasks.map((task, i) => (*/}
+                            {/*    // <div className={`m-3 ${isMobile && i === 0 ? 'ml-[48rem]' : ''}`}>*/}
+                            {/*    <div className={`m-3 `}>*/}
+                            {/*        <Card handleClick={handleCardSelect}/>*/}
+                            {/*    </div>*/}
+                            {/*))}*/}
                         </div>
                     </div>
                     :
