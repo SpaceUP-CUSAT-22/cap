@@ -148,9 +148,9 @@ const SelectedCard = ({handleClose, isMobile}) => {
                         </div>
                     </div>
 
-                    <div className="border border-gray-500 rounded-[30px] p-3">
+                    <div className="flex flex-col items-center border border-gray-500 rounded-[30px] p-3">
                         <h1 className="text-white font-bold text-[1.5rem]">Upload Your Submission</h1>
-                        <div class="relative w-1/4 pt-5">
+                        <div class="flex relative pt-5">
                             <label htmlFor="file-upload" className="px-4 py-2 bg-gray-700 text-white rounded-lg cursor-pointer hover:bg-blue-600 transition duration-300">
                                 Upload File
                             </label>
@@ -162,10 +162,10 @@ const SelectedCard = ({handleClose, isMobile}) => {
                             />
                         </div>
 
-                        <div className="flex justify-between items-center w-full ">
+                        <div className="flex flex-col justify-between items-center">
                             <input type="text" name="description" placeholder="Add remarks about the submission"
-                                   className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 my-5 w-5/6"/>
-                            <button  className=" text-white  rounded-[15px] bg-gray-900 border-2 p-3 py-5 w-1/6 ease-in-out active:scale-90 "
+                                   className=" text-white py-5 rounded-[15px] bg-transparent border-2 my-5 w-[20rem] px-2"/>
+                            <button  className=" text-white  rounded-[15px] bg-gray-900 border-2 p-3 py-5 ease-in-out active:scale-90"
                                      type={"button"} >
                                 Submit</button>
                         </div>

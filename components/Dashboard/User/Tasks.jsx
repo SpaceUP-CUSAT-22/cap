@@ -23,7 +23,7 @@ const Tasks = ({isMobile}) => {
                         <div className="border border-gray-500 px-0 mx-[-1px]"></div>
 
                         <div className={`container flex ${isMobile ? 'flex-row' : 'flex-wrap' } justify-center items-center ${isMobile ? 'h-full' : 'h-96' } ${isMobile ? 'overflow-x-auto' : 'overflow-y-auto' }`}>
-                            <div className={`m-3 ${isMobile ? 'ml-[35rem]' : ''}`}><Card handleClick={handleCardSelect}/></div>
+                            <div className={`m-3 ${isMobile ? 'ml-[48rem]' : ''}`}><Card handleClick={handleCardSelect}/></div>
                             <div className="m-3"><Card handleClick={handleCardSelect}/></div>
                             <div className="m-3"><Card handleClick={handleCardSelect}/></div>
                             <div className="m-3"><Card handleClick={handleCardSelect}/></div>

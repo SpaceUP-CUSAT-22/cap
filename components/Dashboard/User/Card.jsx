@@ -18,6 +18,10 @@ const Card = ({handleClick}) => {
                     <p className="text-white font-bold">Task Name</p>
                     <p className="text-gray-400 font-bold">0 Points</p>
                     <p className="text-gray-400">{desc.slice(0, 80)}</p>
+                    <div className="flex items-center rounded  px-1 mt-2">
+                        <span className="text-white rounded-full p-2 bg-red-900"></span>
+                        <p className="text-gray-400 px-1">Pending</p>
+                    </div>
                 </div>
             </div>
         </Fragment>
