@@ -5,7 +5,8 @@ import "@styles/globals.css";
 import "./global.css";
 import Provider from "@components/Provider";
 // import { SessionProvider } from "next-auth/react";
-import localfont from "next/font/local"
+import localfont from "next/font/local";
+import {Toaster} from "react-hot-toast";
 
 
 
@@ -26,6 +27,10 @@ const RootLayout = ({ children }) => (
       {/*<SessionProvider>*/}
         <Provider>
           <main>
+              <Toaster
+                  position="top-center"
+                  reverseOrder={true}
+              />
             {/* <Nav /> */}
             {/* <Landing /> */}
             {children}
