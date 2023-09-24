@@ -1,6 +1,7 @@
 "use client"
 import Nav from "@components/Nav";
 import "@styles/globals.css";
+import Footer from "@components/Footer";
 
 // export const metadata = {
 //     title: "Space Up | Cusat",
@@ -13,6 +14,7 @@ const RootLayout = ({ children }) => (
     <main>
       <Nav />
       {children}
+        <Footer />
     </main>
     </body>
     </html>

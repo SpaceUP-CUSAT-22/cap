@@ -12,7 +12,7 @@ const Footer = () => {
 
                 <div className="flex  flex-1">
                     <ul className="flex flex-col mx-auto gap-y-2 text-center">
-                        <p className="text-lg font-medium tracking-wider ">INFO</p>
+                        <p className="text-lg font-medium tracking-wider ">INFORMATION</p>
                         <li><a href="#" className="text-gray-300">HOME</a></li>
                         <li><a href="#" className="text-gray-300">ABOUT</a></li>
                         <li><a href="#" className="text-gray-300">TEAM</a></li>
