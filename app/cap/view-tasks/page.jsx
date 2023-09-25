@@ -60,7 +60,7 @@ const ViewTasks = () => {
 
   return (
     <div className='grid grid-cols-1 px-10 py-10'>
-        {(tasks && tasks.length > 0 && session?.user.id)? tasks.map(task => 
+        {(tasks && tasks.length > 0 && session?.user.id)? tasks.map(task =>
           <div className='mb-10 bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
             <div className="flex justify-between">
                 <h1 className="text-xl font-bold">{task.name}</h1>
@@ -71,22 +71,22 @@ const ViewTasks = () => {
                 <Image src={task.attachment} width="350" height="300" alt="image" className='my-5' />
             </div>
             <div className="flex">
-              {task.completed?.includes(session.user.id) ? 
+              {task.completed?.includes(session.user.id) ?
               <>
                 <button className='bg-green-500 text-white rounded-[15px] px-5 py-3'>Submitted</button>
-              </>  
-              : 
+              </>
+              :
               <>
                 <input
                 onChange={handleFileChange}
-                accept=".jpeg, .jpg, .png, .mp4, .pdf" 
+                accept=".jpeg, .jpg, .png, .mp4, .pdf"
                 type="file" name="" id="" className='mr-3' />
                 <button onClick={() => handleSubmit(task)} className='bg-green-500 hover:bg-green-800 text-white rounded-[15px] px-5 py-3'>Submit</button>
-              </>  
+              </>
               }
             </div>
         </div>
-      ) : <h1 className='text-center text-4xl text-black'>No tasks found!</h1>}
+      ) : <h1 className='text-center text-4xl text-white'>No tasks found!</h1>}
     </div>
   )
 }

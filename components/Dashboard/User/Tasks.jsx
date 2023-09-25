@@ -39,7 +39,7 @@ const Tasks = ({isMobile, session}) => {
                         <div className="border border-gray-500 px-0 mx-[-1px]"></div>
 
                         <div className={`container flex ${isMobile ? 'flex-row' : 'flex-wrap' } ${isMobile ? '' : 'items-center justify-center'} ${isMobile ? 'h-full' : 'h-96' } ${isMobile ? 'overflow-x-auto' : 'overflow-y-auto' }`}>
-                            {tasks?.map((task, i) => (
+                            {tasks.length > 0 ? tasks?.map((task, i) => (
                                 <div className={`m-3`}>
                                     <Card handleClick={() => handleCardSelect(task)}
                                             name={task.name}
@@ -49,7 +49,8 @@ const Tasks = ({isMobile, session}) => {
                                             description={task.description}
                                     />
                                 </div>
-                            ))}
+                            )) :
+                            <h1 className={'text-white text-center text-3xl font-semibold'}>No tasks found!</h1>}
                         </div>
                     </div>
                     :
