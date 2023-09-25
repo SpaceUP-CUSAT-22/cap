@@ -22,13 +22,14 @@ export const metadata = {
 
 const RootLayout = ({children}) => (
     <html lang='en'>
-    <body className={`${sourceReguler.variable} bg-hero-pattern`}>
     <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Source+Sans+3&display=swap"
-              rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Source+Sans+3&display=swap"
+          rel="stylesheet"/>
     </head>
+    <body className={`${sourceReguler.variable} bg-hero-pattern`}>
+
     {/*<SessionProvider>*/}
     <Provider>
         <main>

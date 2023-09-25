@@ -65,7 +65,7 @@ const Home = () => {
   }
 
   return (
-    <Provider>
+    <>
       {phone ?
         <>
           <Nav />
@@ -84,7 +84,7 @@ const Home = () => {
           <Footer />
         </>
         }
-    </Provider>
+    </>
   )
 };
 
