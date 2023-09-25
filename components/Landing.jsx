@@ -21,7 +21,7 @@ const Landing = () => {
     return (
         <div className='flex md:flex-row flex-col h-full w-full'>
             <div className='z-[9999] w-screen w-full md:w-1/2 h-screen flex flex-col justify-center pl-16 sm:pl-12 md:pl-36'>
-                <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]"
+                <h2 className="text-white font-black md:text-[60px] sm:text-[60px] text-[45px]"
                     style={{ fontFamily: 'Satisfy'}}
                 >
                     Campus Ambassador

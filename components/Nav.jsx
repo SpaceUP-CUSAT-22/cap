@@ -59,7 +59,7 @@ const Nav = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" className="flex flex-row">
           <Image
-            src='/assets/images/logo.svg'
+            src='/assets/images/logo1.svg'
             alt='logo'
             width={100}
             height={100}
