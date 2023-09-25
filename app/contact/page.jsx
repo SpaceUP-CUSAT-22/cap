@@ -5,7 +5,7 @@ import Link from "next/link";
 const Page = props => {
     return (
         <div className="flex h-screen">
-            <div className="m-auto bg-[#151515] w-1/3  rounded-2xl p-10">
+            <div className="m-auto bg-[#151515]  md:w-1/3  rounded-2xl p-3 md:p-10">
                 <div className="flex flex-col justify-center items-center">
                     <div className="flex flex-row">
                         <Image src={"/assets/icons/hand.png"}

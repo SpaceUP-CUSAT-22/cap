@@ -216,7 +216,7 @@ const Nav = () => {
                               setActive(nav.title);
                             }}
                           >
-                            <Link href={`#${nav.id}`}>{nav.title}</Link>
+                            <Link href={`${nav.id}`}>{nav.title}</Link>
                           </li>
                         ))}
                         <button
