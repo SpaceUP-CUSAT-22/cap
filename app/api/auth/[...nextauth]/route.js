@@ -19,7 +19,12 @@ const handler = NextAuth({
       session.user.username = sessionUser.username;
       session.user.name = sessionUser.name;
       session.user.image = sessionUser.image;
-
+      session.user.phone = sessionUser.phone;
+      session.user.uni = sessionUser.uni;
+      session.user.branch = sessionUser.branch;
+      session.user.yog = sessionUser.yog;
+      session.user.tasks = sessionUser.tasks;
+      session.user.points = sessionUser.points;
 
       return session;
     },

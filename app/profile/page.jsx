@@ -8,9 +8,9 @@ const MyProfile = () => {
   const { data: session } = useSession();
 
   return <>
-    <SessionProvider user={ session?.user}>
-      <Profile user={ session?.user} />
-    </SessionProvider>
+    {/*<SessionProvider user={ session?.user}>*/}
+      <Profile />
+    {/*</SessionProvider>*/}
   </>;
 };
 
