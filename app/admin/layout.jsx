@@ -11,9 +11,11 @@ const AddAdminLayout = ({ children }) => (
   <div className="bg-white">
     <Provider>
       <main className=''>
-        <div className="grid grid-cols-6">
-          <Sidebar />
-          <div className="col-span-5 py-10">
+        <div className="grid grid-cols-6 ">
+          <div className="fixed top-0">
+            <Sidebar />
+          </div>
+          <div className="col-span-5 py-10 overscroll-y-auto">
             {children}
           </div>
         </div>

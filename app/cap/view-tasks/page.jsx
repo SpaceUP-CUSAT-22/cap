@@ -61,7 +61,7 @@ const ViewTasks = () => {
   return (
     <div className='grid grid-cols-1 px-10 py-10'>
         {(tasks && tasks.length > 0 && session?.user.id)? tasks.map(task => 
-          <div className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
+          <div className='mb-10 bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
             <div className="flex justify-between">
                 <h1 className="text-xl font-bold">{task.name}</h1>
                 <h3 className='text-lg font-bold'><b>Exp Date:</b> {new Date(task.expirationDate).toLocaleDateString('en-GB')}</h3>

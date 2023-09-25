@@ -1,9 +1,7 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-
 import User from '@models/user';
 import { connectToDB } from '@utils/database';
-import {sendError} from "@node_modules/next/dist/server/api-utils";
 
 const handler = NextAuth({
   providers: [
@@ -21,6 +19,7 @@ const handler = NextAuth({
       session.user.username = sessionUser.username;
       session.user.name = sessionUser.name;
       session.user.image = sessionUser.image;
+
 
       return session;
     },
