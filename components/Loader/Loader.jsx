@@ -28,7 +28,7 @@ const Loader = ({text}) => {
             <div className="flex justify-center items-center">
                 <div className="flex justify-center">
                     <svg viewBox="0 0 2320 300">
-                        <text x="50%" y="50%" dy=".35em" textAnchor="middle">
+                        <text className={'text-[160px] md:text-[140px]'} x="50%" y="50%" dy=".35em" textAnchor="middle">
                             {text}
                         </text>
                     </svg>

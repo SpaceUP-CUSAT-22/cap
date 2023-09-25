@@ -27,9 +27,9 @@ const Landing = () => {
                     Campus Ambassador
                 </h2>
                 <p className="text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] mt-2 text-white-100">
-                    Be the Messiah for <span className='text-red-700'>Space Up </span><br className='sm:block hidden' />
+                    Be the Messiah for <span className='text-red-700 font-bold'>Space Up </span><br className='sm:block hidden' />
                 </p>
-                {!session?.user && (
+                {!session?.user ? (
                     <>
                         {providers &&
                             Object.values(providers).map((provider) => (
@@ -46,7 +46,20 @@ const Landing = () => {
 
                             ))}
                     </>
-                )}
+                ) :
+                    <a
+                        href={session?.user.type == "admin" ? "/admin" : '/cap'}
+                    >
+                        <button
+                            type='button'
+
+                            className='w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
+                        >
+                            Dashboard
+                        </button>
+                    </a>
+
+                }
             </div>
 
             <div className='w-full md:w-1/2 flex justify-center items-center top-[25%] md:top-0 md:right-0 absolute md:relative'>

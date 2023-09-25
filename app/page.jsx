@@ -19,7 +19,7 @@ const Home = () => {
     const {data: session} = useSession()
 
     const [loaderText, setLoaderText] = React.useState("スペースアップキューサット")
-    const [isLoading, setIsLoading] = React.useState(false)
+    const [isLoading, setIsLoading] = React.useState(true)
 
 
     useEffect(() => {

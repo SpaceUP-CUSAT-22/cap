@@ -114,7 +114,7 @@ const Nav = () => {
                     onClick={() => {
                       signIn(provider.id);
                     }}
-                    className='black_btn'
+                    className='black_btn !border-white'
                   >
                     Sign in
                   </button>
@@ -130,9 +130,7 @@ const Nav = () => {
         <div className='sm:hidden flex relative'>
           {session?.user ? (
             <div className='flex'>
-              <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='bg-tranparent rounded-[50px] border-2 border-white px-3 py-2 text-white'>
-                Dashboard
-              </Link>
+
               <Image
                 src={session?.user.image}
                 width={37}
@@ -145,19 +143,27 @@ const Nav = () => {
               {toggleDropdown && (
                 <div className='dropdown'>
                   <Link
-                    href={`/profile`}
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    My Profile
-                  </Link>
-                  <Link
                       href={`/`}
                       className='dropdown_link'
                       onClick={() => setToggleDropdown(false)}
                   >
                     Home
                   </Link>
+                  <Link
+                      href={session?.user.type == "admin" ? "/admin" : '/cap'}
+                      className='dropdown_link'
+                      onClick={() => setToggleDropdown(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    href={`/profile`}
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}
+                  >
+                    My Profile
+                  </Link>
+
                   <Link
                       href={`/leaderboard`}
                       className='dropdown_link'

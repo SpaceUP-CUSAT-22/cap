@@ -30,18 +30,18 @@ const extras = [
     {
         amount: 'Enjoy exclusive access to SpaceUp CUSAT events, content, and opportunities, including webinars, workshops, and networking sessions.',
         position: 'Exclusive Access',
-        color: 'bg-fuchsia-800',
+        color: 'bg-zinc-800',
     },
     {
         amount: 'Receive certificates of recognition for your outstanding contribution to space and STEM education.',
         position: 'Certificates of Recognition',
-        color: 'bg-fuchsia-800',
+        color: 'bg-zinc-800',
 
     },
     {
         amount: 'Enhance your leadership, communication, and event management skills as part of our cosmic crew.',
         position: 'Skill Development',
-        color: 'bg-fuchsia-800',
+        color: 'bg-zinc-800',
 
     }
 ]
@@ -50,7 +50,7 @@ const extras = [
 const Prizes = ({amount, position, color}) => {
 
     return (
-        <div className={`relative w-64 rounded-tl-2xl rounded-br-2xl overflow-hidden bg-gradient-to-t from-pink-700 via-purple-500 `}>
+        <div className={`relative ${color} w-64 rounded-tl-2xl rounded-br-2xl overflow-hidden`}>
             <div className="absolute top-0 right-0 w-0 h-0 border-r-16 border-b-16 border-blue-500"></div>
             <div className="p-4">
                 <p className="text-white font-bold text-2xl">{position}</p>
