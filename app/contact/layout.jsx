@@ -1,6 +1,7 @@
 "use client"
 import Nav from "@components/Nav";
 import "@styles/globals.css";
+import {Fragment} from "react";
 
 // export const metadata = {
 //     title: "Space Up | Cusat",
@@ -8,14 +9,12 @@ import "@styles/globals.css";
 // };
 
 const RootLayout = ({ children }) => (
-    <html lang='en'>
-    <body className='bg-hero-pattern bg-cover bg-primary w-full'>
+    <Fragment>
         <main>
              <Nav />
             {children}
         </main>
-    </body>
-    </html>
+    </Fragment>
 );
 
 export default RootLayout;

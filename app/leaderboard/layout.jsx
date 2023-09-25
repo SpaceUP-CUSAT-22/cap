@@ -8,14 +8,10 @@ import "@styles/globals.css";
 // };
 
 const RootLayout = ({ children }) => (
-    <html lang='en'>
-    <body className='bg-hero-pattern bg-cover bg-primary w-full'>
-    <main>
+    <>
         <Nav />
         {children}
-    </main>
-    </body>
-    </html>
+    </>
 );
 
 export default RootLayout;

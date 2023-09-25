@@ -69,9 +69,9 @@ const Nav = () => {
 
 
         <ul className="list-none hidden  sm:flex flex-row items-center gap-10">
-          {navLinks.map((nav) => (
+          {navLinks.map((nav,i) => (
             <li
-              key={nav.id}
+              key={i}
               className={`${active === nav.title ? "text-white" : "text-secondary"
                 } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
@@ -104,10 +104,10 @@ const Nav = () => {
           ) : (
             <>
               {providers &&
-                Object.values(providers).map((provider) => (
+                Object.values(providers).map((provider, i) => (
                   <button
                     type='button'
-                    key={provider.name}
+                    key={i}
                     onClick={() => {
                       signIn(provider.id);
                     }}
@@ -168,11 +168,11 @@ const Nav = () => {
           ) : (
             <>
               {providers &&
-                Object.values(providers).map((provider) => (
+                Object.values(providers).map((provider, i) => (
                   <div className="sm:hidden flex flex-1 gap-3 justify-end items-center">
                     <button
                       type='button'
-                      key={provider.name}
+                      key={i}
                       onClick={() => {
                         signIn(provider.id);
                       }}
@@ -197,9 +197,9 @@ const Nav = () => {
                         } p-6 black-gradient  absolute top-5 bg-primary right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
                     >
                       <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-                        {navLinks.map((nav) => (
+                        {navLinks.map((nav, i) => (
                           <li
-                            key={nav.id}
+                            key={i}
                             className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-secondary"
                               }`}
                             onClick={() => {

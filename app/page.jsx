@@ -25,6 +25,8 @@ const Home = () => {
   const [loaderText, setLoaderText] = React.useState("スペースアップキューサット")
   const [isLoading, setIsLoading] = React.useState(true)
 
+  const previoutPage = window.history.state?.as
+
   React.useEffect(() => {
     AOS.init();
     const fetchUsers = async () => {
@@ -63,7 +65,7 @@ const Home = () => {
   }
 
   return (
-    <Provider>
+    <>
       {phone ?
         <>
           <Nav />
@@ -82,7 +84,7 @@ const Home = () => {
           <Footer />
         </>
         }
-    </Provider>
+    </>
   )
 };
 
