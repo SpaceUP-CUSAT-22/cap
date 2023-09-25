@@ -19,7 +19,7 @@ const Home = () => {
     const {data: session} = useSession()
 
     const [loaderText, setLoaderText] = React.useState("スペースアップキューサット")
-    const [isLoading, setIsLoading] = React.useState(false)
+    const [isLoading, setIsLoading] = React.useState(true)
 
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const Home = () => {
 
         setTimeout(() => {
             setIsLoading(false);
-        }, [8000])
+        }, [7800])
     }, [session]);
 
     if (isLoading) {
