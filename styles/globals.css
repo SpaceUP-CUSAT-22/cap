@@ -190,6 +190,13 @@ p, h1, h2, h3{
 	margin-top: 5px;
 }
 
+@media screen and (max-width: 768px) {
+  .floating {
+    margin-left: 0; /* Set margin-left to 0 on screens with a width of 768px or less (adjust the width as needed) */
+  }
+}
+
+
 @keyframes floating {
 	0% { transform: translate(0, 0px); }
 	50% { transform: translate(0, 15px); }

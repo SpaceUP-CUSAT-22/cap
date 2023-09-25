@@ -55,7 +55,7 @@ const Nav = () => {
   }, []);
 
   return (
-  <nav className={`sm:px-8 px-4 flex items-center z-20 glass-effect`}>
+  <nav className={`sm:px-8 px-4 flex items-center z-20 glass-effect mt-5`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" className="flex flex-row">
           <Image
