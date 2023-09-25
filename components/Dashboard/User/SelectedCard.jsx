@@ -22,8 +22,8 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
     }, [isSubmitted]);
 
     const handleShareClick = () => {
-        const imageUrl = "URL_OF_YOUR_IMAGE";
-        const captionText = "Your caption text here";
+        const imageUrl = data?.attachment;
+        const captionText = data?.description;
 
         const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
             captionText
@@ -174,8 +174,8 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
                 <div data-aos="fade-up" data-aos-duration="400"
                      className="container rounded-3xl m-0 bg-gray-900 flex flex-col w-full min-h-screen absolute top-28 left-0 mb-56 p-5">
                     <div className="flex flex-row items-center justify-evenly">
-                        <h1 className="font-bold text-3xl text-white">Task Name</h1>
-                        <p className="text-white bg-amber-900 rounded-2xl px-4 m-auto">0 Points</p>
+                        <h1 className="font-bold text-3xl text-white">{data.name}</h1>
+                        <p className="text-white bg-amber-900 rounded-2xl px-4 m-auto">{data.points} Points</p>
                         <Image className="h-5 bg-red-900 rounded-full p-1 cursor-pointer"
                                src={"/assets/icons/close.png"}
                                alt={"close"}
@@ -184,10 +184,10 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
                     </div>
 
                     <div className="flex flex-col w-full py-4 items-center justify-center">
-                        <Image className="rounded" src={"/test.jpeg"} alt={"test"} width={540} height={675}/>
+                        <Image className="rounded" src={data?.attachment} alt={"test"} width={540} height={675}/>
 
                         <div className="flex flex-col pt-4">
-                            <p className="text-white">{desc}</p>
+                            <p className="text-white">{data.description}</p>
 
                             <div className="flex py-4">
                                 <Image
