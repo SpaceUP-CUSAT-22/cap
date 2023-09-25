@@ -1,5 +1,4 @@
 import "@styles/globals.css";
-import "./global.css";
 import Provider from "@components/Provider";
 import localfont from "next/font/local";
 import {Toaster} from "react-hot-toast";
@@ -19,12 +18,15 @@ export const metadata = {
 const RootLayout = ({children}) => (
     <html lang='en'>
     <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com"/>
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Source+Sans+3&display=swap"
-          rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Source+Sans+3&display=swap"
+              rel="stylesheet"/>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Satisfy&family=Source+Sans+3&display=swap"
+            rel="stylesheet"/>
     </head>
-    <body className={`${sourceReguler.variable} bg-hero-pattern`}>
+    <body className={`${sourceReguler.variable} bg-hero-pattern bg-no-repeat custom-bg`}>
 
     {/*<SessionProvider>*/}
     <Provider>

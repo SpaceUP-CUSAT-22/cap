@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
+p, h1, h2, h3{
+  font-family: 'Poppins', sans-serif;
+}
+
+/*
+  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them!
 */
 
 .main {
@@ -182,4 +186,75 @@
 	0% { transform: translate(0, 0px); }
 	50% { transform: translate(0, 15px); }
 	100% { transform: translate(0, -0px); }
+}
+
+.glass-effect {
+  --border-bottom-width: 2px;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --border-left-width: 2px;
+  --border-right-width: 2px;
+  --border-style: solid;
+  --border-top-width: 2px;
+  backdrop-filter: blur(40px);
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  border-radius: 30px;
+  height: auto;
+  left: 50%;
+  max-width: 840px;
+  position: fixed;
+  top: 20px;
+  transform: perspective(1200px) translate(-50%);
+  width: 70%;
+  z-index: 5;
+}
+
+
+
+
+
+@font-face {
+  font-family: "SourceSans3";
+  src: url("../fonts/SourceSans3.ttf");
+}
+
+
+.container::-webkit-scrollbar {
+  width: 0.1rem;
+  height: 0.4rem;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.2);
+}
+
+svg {
+  font-family: 'Kaushan Script', cursive;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+svg text {
+  text-transform: uppercase;
+  animation: stroke 2.5s infinite alternate;
+  stroke-width: 2;
+  stroke: #ffffff;
+  font-size: 140px;
+}
+@keyframes stroke {
+  0%   {
+    fill: rgba(72,138,20,0); stroke: rgb(237, 0, 0);
+    stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+  }
+  70%  {fill: rgba(72,138,20,0); stroke: rgb(255, 0, 0); }
+  80%  {fill: rgba(72,138,20,0); stroke: rgb(255, 0, 0); stroke-width: 3;}
+  100% {
+    fill: rgb(255, 255, 255); stroke: rgba(54,95,160,0);
+    stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+  }
+}
+
+.custom-bg{
+  background-size: contain;
+  background-repeat: repeat;
 }
