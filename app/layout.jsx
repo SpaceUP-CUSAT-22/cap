@@ -13,15 +13,13 @@ export const metadata = {
 const RootLayout = ({ children }) => (
   <html lang='en'>
     <body className='bg-hero-pattern bg-cover bg-primary w-full'>
-      {/*<SessionProvider>*/}
-        <Provider>
-          <main>
-            {/* <Nav /> */}
-            {/* <Landing /> */}
-            {children}
-          </main>
-        </Provider>
-      {/*</SessionProvider>*/}
+      <Provider>
+        <main>
+          {/* <Nav /> */}
+          {/* <Landing /> */}
+          {children}
+        </main>
+      </Provider>
     </body>
   </html>
 );
