@@ -12,17 +12,17 @@ const Footer = () => {
                     <div className="flex flex-col mx-auto text-center gap-y-4 ">
                         <p className="text-lg font-medium tracking-wider ">SOCIAL</p>
                         <div className="flex flex-row gap-x-1">
-                            <BiLogoFacebookCircle size={21}/>
+                            {/*<BiLogoFacebookCircle size={21}/>*/}
                             <Link href="https://www.facebook.com/SedsCusatIrescusat/"
                                   className="text-gray-300 ">Facebook</Link>
                         </div>
                         <div className="flex flex-row gap-x-1 ">
-                            <BiLogoInstagram size={21}/>
+                            {/*<BiLogoInstagram size={21}/>*/}
                             <Link href="https://www.instagram.com/spaceupcusat/"
                                   className="text-gray-300">Instagram</Link>
                         </div>
                         <div className="flex flex-row gap-x-1">
-                            <BiLogoTwitter size={21}/>
+                            {/*<BiLogoTwitter size={21}/>*/}
                             <Link href="https://twitter.com/spaceupcusat" className="text-gray-300">Twitter</Link>
                         </div>
                     </div>
