@@ -3,7 +3,7 @@ import React from "react";
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 
-const MoreDetails = ({setPhone}) => {
+const MoreDetails = () => {
     const { data: session } = useSession()
     const [formData, setFormData] = React.useState({
         name: '',
@@ -26,7 +26,7 @@ const MoreDetails = ({setPhone}) => {
             console.log(formData)
             const res = await axios.post('/api/users', {formData, id})
             if(res){
-                setPhone(true)
+                console.log('phone')
             }
         } catch (error) {
             console.log(error)

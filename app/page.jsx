@@ -20,32 +20,10 @@ import "aos/dist/aos.css";
 
 const Home = () => {
   const { data: session } = useSession()
-  const [phone, setPhone] = React.useState(true)
 
   const [loaderText, setLoaderText] = React.useState("スペースアップキューサット")
   const [isLoading, setIsLoading] = React.useState(true)
 
-
-  React.useEffect(() => {
-    AOS.init();
-    const fetchUsers = async () => {
-      try {
-        if (session) {
-          const res = await axios.get(`/api/users/${session.user?.id}`)
-          console.log(res.data?.phone)
-          if (res.data && (res.data?.phone == "" || res.data?.phone == 0)) {
-            setPhone(false)
-          } else {
-            console.log(res.data.phone)
-          }
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-    fetchUsers()
-  }, [session])
 
   useEffect(() => {
     setTimeout(() => {
@@ -65,7 +43,7 @@ const Home = () => {
 
   return (
     <>
-      {phone ?
+      {!session?.user?.phone ?
         <>
           <Nav />
           <Landing />
@@ -79,7 +57,7 @@ const Home = () => {
         :
         <>
           <Nav />
-            <MoreDetails setPhone={setPhone} />
+            <MoreDetails />
           <Footer />
         </>
         }
