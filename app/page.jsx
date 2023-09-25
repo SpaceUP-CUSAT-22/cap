@@ -55,7 +55,7 @@ const Home = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, [8000])
-  }, []);
+  }, [session]);
 
   if(isLoading) {
     return (
