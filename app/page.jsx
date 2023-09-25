@@ -1,6 +1,6 @@
 "use client"
 import Timeline from "@components/Timeline";
-import React from "react";
+import React, {useEffect} from "react";
 import Footer from "@components/Footer";
 import Eligibility from "@components/Eligibility";
 import Card from "@components/Card";
@@ -13,14 +13,20 @@ import Landing from "@components/Landing";
 import Loader from "@components/Loader/Loader";
 import JoinNow from "@components/JoinNow";
 import About from "@components/About";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 
 const Home = () => {
   const { data: session } = useSession()
   const [phone, setPhone] = React.useState(true)
+
+  const [loaderText, setLoaderText] = React.useState("SPACE UP CUSAT")
+  const [showFade, setShowFade] = React.useState("")
+
   React.useEffect(() => {
-    console.log(session)
+    AOS.init();
     const fetchUsers = async() => {
       try {
         if(session){
@@ -39,29 +45,35 @@ const Home = () => {
 
     fetchUsers()
   }, [session])
+
+  useEffect(() => {
+    setTimeout(() => {
+        setShowFade("fade-up")
+        setLoaderText("スペースアップキューサット")
+    }, 4750);
+  }, []);
+
   return(
     <Provider>
-
-
-      {/*<Loader />*/}
-      {phone ?
-        <>
-          <Nav />
-          <Landing />
-          <Timeline />
-          <Card />
-          <Eligibility />
-          <JoinNow />
-          <About />
-          <Footer />
-        </>
-        :
-        <>
-          <Nav />
-            <MoreDetails setPhone={setPhone} />
-          <Footer />
-        </>
-        }
+    <Loader text={loaderText}/>
+    {/*  {phone ?*/}
+    {/*    <>*/}
+    {/*      <Nav />*/}
+    {/*      <Landing />*/}
+    {/*      <Timeline />*/}
+    {/*      <Card />*/}
+    {/*      <Eligibility />*/}
+    {/*      <JoinNow />*/}
+    {/*      <About />*/}
+    {/*      <Footer />*/}
+    {/*    </>*/}
+    {/*    :*/}
+    {/*    <>*/}
+    {/*      <Nav />*/}
+    {/*        <MoreDetails setPhone={setPhone} />*/}
+    {/*      <Footer />*/}
+    {/*    </>*/}
+    {/*    }*/}
     </Provider>
   )
 };
