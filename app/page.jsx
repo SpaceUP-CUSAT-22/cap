@@ -1,6 +1,6 @@
 "use client"
 import Timeline from "@components/Timeline";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Footer from "@components/Footer";
 import Eligibility from "@components/Eligibility";
 import Card from "@components/Card";
@@ -22,19 +22,19 @@ const Home = () => {
   const { data: session } = useSession()
   const [phone, setPhone] = React.useState(true)
 
-  const [loaderText, setLoaderText] = React.useState("SPACE UP CUSAT")
-  const [showFade, setShowFade] = React.useState("")
+  const [loaderText, setLoaderText] = React.useState("スペースアップキューサット")
+  const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
     AOS.init();
-    const fetchUsers = async() => {
+    const fetchUsers = async () => {
       try {
-        if(session){
+        if (session) {
           const res = await axios.get(`/api/users/${session.user?.id}`)
           console.log(res.data?.phone)
-          if(res.data && (res.data?.phone == "" || res.data?.phone == 0)){
+          if (res.data && (res.data?.phone == "" || res.data?.phone == 0)) {
             setPhone(false)
-          }else{
+          } else {
             console.log(res.data.phone)
           }
         }
@@ -48,32 +48,40 @@ const Home = () => {
 
   useEffect(() => {
     setTimeout(() => {
-        setShowFade("fade-up")
-        setLoaderText("スペースアップキューサット")
+      setLoaderText("SPACE UP CUSAT")
     }, 4750);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, [8000])
   }, []);
 
-  return(
+  if(isLoading) {
+    return (
+<Loader text={loaderText} />
+    )
+  }
+
+  return (
     <Provider>
-    <Loader text={loaderText}/>
-    {/*  {phone ?*/}
-    {/*    <>*/}
-    {/*      <Nav />*/}
-    {/*      <Landing />*/}
-    {/*      <Timeline />*/}
-    {/*      <Card />*/}
-    {/*      <Eligibility />*/}
-    {/*      <JoinNow />*/}
-    {/*      <About />*/}
-    {/*      <Footer />*/}
-    {/*    </>*/}
-    {/*    :*/}
-    {/*    <>*/}
-    {/*      <Nav />*/}
-    {/*        <MoreDetails setPhone={setPhone} />*/}
-    {/*      <Footer />*/}
-    {/*    </>*/}
-    {/*    }*/}
+      {phone ?
+        <>
+          <Nav />
+          <Landing />
+          <Timeline />
+          <Card />
+          <Eligibility />
+          <JoinNow />
+          <About />
+          <Footer />
+        </>
+        :
+        <>
+          <Nav />
+            <MoreDetails setPhone={setPhone} />
+          <Footer />
+        </>
+        }
     </Provider>
   )
 };
