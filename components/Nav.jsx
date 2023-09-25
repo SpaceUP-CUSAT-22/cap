@@ -81,7 +81,7 @@ const Nav = () => {
           ))}
           {session?.user ? (
             <div className='flex gap-3 md:gap-5'>
-              <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='black_btn'>
+              <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='black_btn !border-white'>
                 Dashboard
               </Link>
 
@@ -89,7 +89,7 @@ const Nav = () => {
                 setToggleDropdown(false);
                 signOut();
               }}
-                    className='black_btn'
+                    className='black_btn !border-white'
                     >
                 Sign Out
               </button>

@@ -8,9 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  min-height: 100vh;
-}
 
 p, h1, h2, h3{
   font-family: 'Poppins', sans-serif;
@@ -262,8 +259,3 @@ svg text {
   }
 }
 
-.custom-bg{
-  background-image: url("/assets/images/paperbg.webp");
-  background: url("/assets/images/paperbg.webp") no-repeat center center fixed;
-  background-size: contain;
-}
