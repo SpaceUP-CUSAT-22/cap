@@ -55,7 +55,7 @@ const Nav = () => {
   }, []);
 
   return (
-  <nav className={`sm:px-8 px-4 flex items-center z-20 glass-effect mt-5`}>
+  <nav className={`sm:px-8 px-4 flex items-center z-20 glass-effect md:mt-0 mt-5`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" className="flex flex-row">
           <Image
@@ -127,9 +127,9 @@ const Nav = () => {
 
         {/* Mobile Navigation */}
 
-        <div className='sm:hidden flex relative'>
+        <div className='sm:hidden  flex relative'>
           {session?.user ? (
-            <div className='flex'>
+            <div className='flex '>
 
               <Image
                 src={session?.user.image}
@@ -141,24 +141,24 @@ const Nav = () => {
               />
 
               {toggleDropdown && (
-                <div className='dropdown'>
+                <div className='dropdown bg-primary black-gradient'>
                   <Link
                       href={`/`}
-                      className='dropdown_link'
+                      className='dropdown_link !text-white'
                       onClick={() => setToggleDropdown(false)}
                   >
                     Home
                   </Link>
                   <Link
                       href={session?.user.type == "admin" ? "/admin" : '/cap'}
-                      className='dropdown_link'
+                      className='dropdown_link !text-white'
                       onClick={() => setToggleDropdown(false)}
                   >
                     Dashboard
                   </Link>
                   <Link
                     href={`/profile`}
-                    className='dropdown_link'
+                    className='dropdown_link !text-white'
                     onClick={() => setToggleDropdown(false)}
                   >
                     My Profile
@@ -166,7 +166,7 @@ const Nav = () => {
 
                   <Link
                       href={`/leaderboard`}
-                      className='dropdown_link'
+                      className='dropdown_link !text-white'
                       onClick={() => setToggleDropdown(false)}
                   >
                     Leaderboard
@@ -177,7 +177,7 @@ const Nav = () => {
                       setToggleDropdown(false);
                       signOut();
                     }}
-                    className='mt-3 black_btn !text-black'
+                    className='mt-3 black_btn !text-white !border-white'
                   >
                     Sign Out
                   </button>

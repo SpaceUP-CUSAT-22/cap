@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const benefit = [
     {
@@ -67,6 +68,9 @@ const Card = () => {
                 Benefits.</h2>
             <h2 className="text-[#FFFF00] font-black text-[20px] pb-6">Prizes worth ₹15,000 and exclusive access to a
                 galaxy of benefits</h2>
+            <div className={'flex justify-center'}>
+                <Image width={'350'} height={'300'} src={'/assets/images/prizes-worth.svg'} />
+            </div>
             <div className='flex gap-6 flex-wrap justify-center'>
                 {benefit.map((benefit, i) => (
                     <Prizes key={i} amount={benefit.amount} position={benefit.position} color={benefit.color}/>

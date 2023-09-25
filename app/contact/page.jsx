@@ -81,10 +81,11 @@ const Page = props => {
                         <div className="flex flex-row p-3">
                             <Link href={"https://twitter.com/spaceupcusat"}>
                                 <div className={" rounded bg-[#272727] rounded-full p-3"}>
-                                    <Image src={"/assets/icons/twitter.png"}
+                                    <Image
+                                        src={"/assets/icons/twitter.png"}
                                            alt={"phone"}
                                            width={30}
-                                           height={30}
+                                           height={150}
                                     />
                                 </div>
                             </Link>
