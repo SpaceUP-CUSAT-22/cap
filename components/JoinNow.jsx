@@ -23,7 +23,7 @@ const JoinNow = () => {
                 <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} ${isMobile ? 'w-full' : 'w-[70%]'}   bg-pink-700 p-10 gap-3 items-center justify-between `}>
                     <div className="flex flex-col gap-2">
                         <h1 className="text-white font-bold text-3xl">Ready to win Exciting Prizes?</h1>
-                        <p className="text-white">Become a part of India’s largest space conference</p>
+                        <p className="text-white">Become a part of India’s largest space unconference</p>
                     </div>
                     <button onClick={handleClick} className="cursor-pointer bg-white active:scale-90 ease-in-out rounded-3xl py-2 px-6">SIGN UP</button>
                 </div>

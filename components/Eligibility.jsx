@@ -21,9 +21,8 @@ const Eligibility = () => {
                     Space Up may apply.
                 </p>
                 <p className='mt-4 text-white text-[17px] max-w-3xl leading-[30px]'>
-                    Special certificate for top 20 people.Certificate for those who completed a certain tier (% of
+                    Special certificate for top 50 people.Certificate for those who completed a certain tier (% of
                     work).
-                    Extra benefits for excellence in work (Awarded by Space Up PRC)
                 </p>
             </div>
         </div>

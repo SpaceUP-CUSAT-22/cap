@@ -13,19 +13,19 @@ const Profile = ({user}) => {
                 {session?.user && <div className="flex flex-col justify-center">
                     <h1 className="text-center text-white text-3xl font-bold">{session.user.name}'s Profile</h1>
                     <input name="email" value={session.user.email}
-                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[50%] my-5"
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
                            placeholder="Name" type="email" id=""/>
                     <input name="phone" value={session.user.phone}
-                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[50%] my-5"
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
                            placeholder="Phone number" type="text" id=""/>
                     <input name="uni" value={session.user.uni}
-                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[50%] my-5"
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
                            placeholder="College/University Name" type="text" id=""/>
                     <input name="branch" value={session.user.branch}
-                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[50%] my-5"
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
                            placeholder="Branch" type="text" id=""/>
                     <input name="yog" value={session.user.yog}
-                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[50%] my-5"
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
                            placeholder="Year of graduation" type="number" id=""/>
                     <Link href="/"
                           className="bg-violet-500 text-center hover:bg-violet-800 w-[30%] m-auto text-white rounded-[15px] my-10 px-5 py-3">Continue</Link>
