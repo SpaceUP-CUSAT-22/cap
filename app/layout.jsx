@@ -1,9 +1,5 @@
-// "use client"
-// import Nav from "@components/Nav";
-// import Landing from "@components/Landing";
 import "@styles/globals.css";
 import Provider from "@components/Provider";
-// import { SessionProvider } from "next-auth/react";
 import localfont from "next/font/local";
 import {Toaster} from "react-hot-toast";
 

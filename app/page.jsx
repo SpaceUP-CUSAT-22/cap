@@ -4,7 +4,6 @@ import React, {useEffect} from "react";
 import Footer from "@components/Footer";
 import Eligibility from "@components/Eligibility";
 import Card from "@components/Card";
-import Provider from "@components/Provider";
 import Nav from "@components/Nav";
 import MoreDetails from "@components/MoreDetails";
 import {useSession} from 'next-auth/react'
@@ -13,7 +12,6 @@ import Landing from "@components/Landing";
 import Loader from "@components/Loader/Loader";
 import JoinNow from "@components/JoinNow";
 import About from "@components/About";
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 
@@ -21,7 +19,7 @@ const Home = () => {
     const {data: session} = useSession()
 
     const [loaderText, setLoaderText] = React.useState("スペースアップキューサット")
-    const [isLoading, setIsLoading] = React.useState(true)
+    const [isLoading, setIsLoading] = React.useState(false)
 
 
     useEffect(() => {

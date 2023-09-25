@@ -50,7 +50,7 @@ const extras = [
 const Prizes = ({amount, position, color}) => {
 
     return (
-        <div className={`relative ${color}   w-64 rounded-tl-2xl rounded-br-2xl overflow-hidden`}>
+        <div className={`relative w-64 rounded-tl-2xl rounded-br-2xl overflow-hidden bg-gradient-to-t from-pink-700 via-purple-500 `}>
             <div className="absolute top-0 right-0 w-0 h-0 border-r-16 border-b-16 border-blue-500"></div>
             <div className="p-4">
                 <p className="text-white font-bold text-2xl">{position}</p>
@@ -62,7 +62,7 @@ const Prizes = ({amount, position, color}) => {
 
 const Card = () => {
     return (
-        <div className='w-full flex items-center texxt-center flex-col py-36 px-10 custom-bg'>
+        <div className='w-full flex items-center texxt-center flex-col py-36 px-10'>
             <h2 className="text-white font-black md:text-[60px] sm:text-[50px]  text-[30px] pb-4">Prizes and
                 Benefits.</h2>
             <h2 className="text-[#FFFF00] font-black text-[20px] pb-6">Prizes worth ₹15,000 and exclusive access to a
