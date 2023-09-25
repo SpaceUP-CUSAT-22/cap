@@ -50,7 +50,9 @@ const Tasks = ({isMobile, session}) => {
                                     />
                                 </div>
                             )) :
-                            <h1 className={'text-white text-center text-3xl font-semibold my-[150px]'}>No tasks found!</h1>}
+                                <div className="flex justify-center items-center w-full">
+                                    <h1 className={'text-white text-center text-3xl font-semibold my-[150px]'}>No tasks found!</h1>
+                                </div>}
                         </div>
                     </div>
                     :

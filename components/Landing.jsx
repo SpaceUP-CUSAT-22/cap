@@ -5,8 +5,11 @@ import {useEffect, useState} from "react";
 import {signIn, signOut, useSession, getProviders} from "next-auth/react";
 import Image from 'next/image';
 import space from "../public/assets/images/space suit.png";
+import Link from "next/link";
+import {useRouter} from "next/navigation";
 
 const Landing = () => {
+    const router = useRouter();
     const {data: session} = useSession();
     const [providers, setProviders] = useState(null);
 
@@ -16,6 +19,13 @@ const Landing = () => {
             setProviders(res);
         })();
     }, []);
+
+    const handleDashboardClick = () => {
+        if (session?.user.type == "admin")
+            router.push('/admin')
+        else
+            router.push('/cap')
+    }
 
 
     return (
@@ -48,17 +58,13 @@ const Landing = () => {
                                 ))}
                         </>
                     ) :
-                    <a
-                        href={session?.user.type == "admin" ? "/admin" : '/cap'}
-                    >
-                        <button
+                        <button onClick={handleDashboardClick}
                             type='button'
 
                             className='z-[9999] w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
                         >
                             Dashboard
                         </button>
-                    </a>
 
                 }
             </div>

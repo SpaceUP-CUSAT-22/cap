@@ -22,14 +22,14 @@ const Home = () => {
         if (window.innerWidth < 640)
             setIsMobile(true);
 
-        console.log(session?.user)
-        if (session?.user?.type == "admin") {
-            router.push('/admin')
-        }
-
-        if(!session){
-            router.push('/')
-        }
+        // console.log(session?.user)
+        // if (session?.user?.type == "admin") {
+        //     router.push('/admin')
+        // }
+        //
+        // if(!session){
+        //     router.push('/')
+        // }
     }, [session])
 
 
