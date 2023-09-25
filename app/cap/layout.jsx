@@ -2,6 +2,7 @@
 import Nav from "@components/Nav";
 import "@styles/globals.css";
 import Footer from "@components/Footer";
+import {Fragment} from "react";
 
 // export const metadata = {
 //     title: "Space Up | Cusat",
@@ -9,15 +10,12 @@ import Footer from "@components/Footer";
 // };
 
 const RootLayout = ({ children }) => (
-    <html lang='en'>
-    <body className='bg-hero-pattern bg-cover bg-primary w-full'>
-    <main>
+    <Fragment>
+
       <Nav />
       {children}
         <Footer />
-    </main>
-    </body>
-    </html>
+    </Fragment>
 );
 
 export default RootLayout;
