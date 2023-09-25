@@ -22,7 +22,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
     }, [isSubmitted]);
 
     const handleShareClick = () => {
-        const imageUrl = data?.attachment;
+        const imageUrl = "https://picsum.photos/200/300";
         const captionText = data?.description;
 
         const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(
