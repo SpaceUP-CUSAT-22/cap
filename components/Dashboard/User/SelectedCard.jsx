@@ -31,6 +31,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
         window.open(whatsappUrl);
     };
 
+
     const handleDownloadClick = () => {
 
         const mimeTypeMatch = data.attachment.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,/);
