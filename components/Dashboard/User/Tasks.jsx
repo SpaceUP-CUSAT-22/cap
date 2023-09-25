@@ -35,7 +35,7 @@ const Tasks = ({isMobile, session}) => {
             <div className="flex flex-col">
                 {!isCardSelected ?
                     <div>
-                        <h1 className="text-3xl font-bold text-white">Tasks</h1>
+                        <h1 className="text-3xl font-bold text-white text-center">Tasks</h1>
                         <div className="border border-gray-500 px-0 mx-[-1px]"></div>
 
                         <div className={`container flex ${isMobile ? 'flex-row' : 'flex-wrap' } ${isMobile ? '' : 'items-center justify-center'} ${isMobile ? 'h-full' : 'h-96' } ${isMobile ? 'overflow-x-auto' : 'overflow-y-auto' }`}>
@@ -50,7 +50,7 @@ const Tasks = ({isMobile, session}) => {
                                     />
                                 </div>
                             )) :
-                            <h1 className={'text-white text-center text-3xl font-semibold'}>No tasks found!</h1>}
+                            <h1 className={'text-white text-center text-3xl font-semibold my-[150px]'}>No tasks found!</h1>}
                         </div>
                     </div>
                     :

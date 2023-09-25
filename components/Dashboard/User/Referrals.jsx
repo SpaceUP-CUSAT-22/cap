@@ -17,7 +17,7 @@ const Referrals = ({isMobile, user}) => {
         <Fragment>
             <div className="flex flex-col">
                 <div>
-                    <h1 className="text-3xl font-bold text-white">Referrals</h1>
+                    <h1 className="text-3xl font-bold text-white text-center">Referrals</h1>
                     <div className="border border-gray-500 px-0 mx-[-1px]"></div>
 
                     <div className={`container flex  justify-center items-center h-96 ${isMobile ? 'overflow-x-auto' : 'overflow-y-auto'}`}>
