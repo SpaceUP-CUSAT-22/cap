@@ -62,7 +62,7 @@ const Prizes = ({amount, position, color}) => {
 
 const Card = () => {
     return (
-        <div className='w-full flex items-center texxt-center flex-col py-36 px-10'>
+        <div className='w-full flex items-center texxt-center flex-col py-36 px-10 custom-bg'>
             <h2 className="text-white font-black md:text-[60px] sm:text-[50px]  text-[30px] pb-4">Prizes and
                 Benefits.</h2>
             <h2 className="text-[#FFFF00] font-black text-[20px] pb-6">Prizes worth ₹15,000 and exclusive access to a

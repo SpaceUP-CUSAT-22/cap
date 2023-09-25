@@ -23,7 +23,7 @@ module.exports = {
         "white-100": "#f3f3f3",
       },
       backgroundImage: {
-        "hero-pattern": "url('/assets/images/herobg4.png')",
+        "hero-pattern": "url('/assets/images/herobg4.webp')",
       },
     },
   },
