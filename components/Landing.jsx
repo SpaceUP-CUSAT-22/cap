@@ -20,7 +20,7 @@ const Landing = () => {
 
     return (
         <div className='flex md:flex-row flex-col h-full w-full'>
-            <div className='z-[9999] w-screen w-full md:w-1/2 h-screen flex flex-col justify-center pl-16 sm:pl-12 md:pl-36'>
+            <div className='w-screen w-full md:w-1/2 h-screen flex flex-col justify-center pl-16 sm:pl-12 md:pl-36'>
                 <h2 className="text-white font-black md:text-[60px] sm:text-[60px] text-[45px]"
                     style={{ fontFamily: 'Satisfy'}}
                 >
@@ -39,7 +39,7 @@ const Landing = () => {
                                     onClick={() => {
                                         signIn(provider.id);
                                     }}
-                                    className='w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
+                                    className='z-[9999] w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
                                 >
                                     Sign in
                                 </button>
@@ -53,7 +53,7 @@ const Landing = () => {
                         <button
                             type='button'
 
-                            className='w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
+                            className='z-[9999] w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
                         >
                             Dashboard
                         </button>
