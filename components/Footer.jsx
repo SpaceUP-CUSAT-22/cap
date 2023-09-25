@@ -31,7 +31,7 @@ const Footer = () => {
             <div className="flex flex-1">
                 <div className="flex flex-col mx-auto text-center">
                     <Image
-                        src='/assets/images/logo.png'
+                        src='/assets/images/logo.svg'
                         alt='logo'
                         width={200}
                         height={200}

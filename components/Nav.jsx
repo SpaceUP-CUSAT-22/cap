@@ -55,7 +55,7 @@ const Nav = () => {
   }, []);
 
   return (
-  <nav className={`sm:px-8 px-4 w-full flex items-center py-1 fixed top-0 z-20 ${scrolled ? "bg-primary" : "bg-transparent"}`}>
+  <nav className={`sm:px-8 px-4 flex items-center z-20 glass-effect`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" className="flex flex-row">
           <Image
@@ -85,7 +85,10 @@ const Nav = () => {
                 Dashboard
               </Link>
 
-              <button type='button' onClick={signOut}
+              <button type='button' onClick={() => {
+                setToggleDropdown(false);
+                signOut();
+              }}
                     className='black_btn'
                     >
                 Sign Out
@@ -127,11 +130,14 @@ const Nav = () => {
         <div className='sm:hidden flex relative'>
           {session?.user ? (
             <div className='flex'>
+              <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='bg-tranparent rounded-[50px] border-2 border-white px-3 py-2 text-white'>
+                Dashboard
+              </Link>
               <Image
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className='rounded-full'
+                className='rounded-full ml-5'
                 alt='profile'
                 onClick={() => setToggleDropdown(!toggleDropdown)}
               />
@@ -146,11 +152,18 @@ const Nav = () => {
                     My Profile
                   </Link>
                   <Link
-                    href={session?.user.type == "admin" ? "/admin" : '/cap'}
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
+                      href={`/`}
+                      className='dropdown_link'
+                      onClick={() => setToggleDropdown(false)}
                   >
-                    Dashboard
+                    Home
+                  </Link>
+                  <Link
+                      href={`/leaderboard`}
+                      className='dropdown_link'
+                      onClick={() => setToggleDropdown(false)}
+                  >
+                    Leaderboard
                   </Link>
                   <button
                     type='button'
@@ -158,7 +171,7 @@ const Nav = () => {
                       setToggleDropdown(false);
                       signOut();
                     }}
-                    className='mt-5 black_btn !text-black'
+                    className='mt-3 black_btn !text-black'
                   >
                     Sign Out
                   </button>
@@ -170,16 +183,6 @@ const Nav = () => {
               {providers &&
                 Object.values(providers).map((provider, i) => (
                   <div className="sm:hidden flex flex-1 gap-3 justify-end items-center">
-                    <button
-                      type='button'
-                      key={i}
-                      onClick={() => {
-                        signIn(provider.id);
-                      }}
-                      className='black_btn'
-                    >
-                      Sign in
-                    </button>
 
                     {toggle ?
                       <AiOutlineClose
@@ -210,6 +213,16 @@ const Nav = () => {
                             <Link href={`#${nav.id}`}>{nav.title}</Link>
                           </li>
                         ))}
+                        <button
+                            type='button'
+                            key={i}
+                            onClick={() => {
+                              signIn(provider.id);
+                            }}
+                            className='bg-tranparent w-100 rounded-[50px] border-2 border-white px-3 py-2 text-white'
+                        >
+                          Sign in
+                        </button>
                       </ul>
                     </div>
                   </div>

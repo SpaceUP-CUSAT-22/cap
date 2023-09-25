@@ -30,7 +30,7 @@ const RootLayout = ({children}) => (
             href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Satisfy&family=Source+Sans+3&display=swap"
             rel="stylesheet"/>
     </head>
-    <body className={`${sourceReguler.variable} bg-hero-pattern bg-no-repeat`}>
+    <body className={`${sourceReguler.variable} bg-hero-pattern bg-no-repeat custom-bg`}>
 
     {/*<SessionProvider>*/}
     <Provider>

@@ -10,7 +10,7 @@ const JoinNow = () => {
             top: 0,
             behavior: "smooth"
         });
-    } 
+    }
 
     React.useEffect(() => {
         if (window.innerWidth < 640) {
@@ -20,7 +20,7 @@ const JoinNow = () => {
     return (
         <Fragment>
             <div className={`flex items-center justify-center my-6 w-full`}>
-                <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'}  bg-pink-700 p-10 w-[70%] gap-3 items-center justify-between `}>
+                <div className={`flex ${isMobile ? 'flex-col' : 'flex-row'} ${isMobile ? 'w-full' : 'w-[70%]'}   bg-pink-700 p-10 gap-3 items-center justify-between `}>
                     <div className="flex flex-col gap-2">
                         <h1 className="text-white font-bold text-3xl">Ready to win Exciting Prizes?</h1>
                         <p className="text-white">Become a part of India’s largest space conference</p>

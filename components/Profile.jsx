@@ -3,15 +3,15 @@ import {useSession} from 'next-auth/react'
 const Profile = ({user}) => {
     const { data: session } = useSession();
 
-    if (!user) {
+    if (!user && user!="") {
         return <div>Loading...</div>;
     }
 
     return (
         <div className="container mx-auto px-4">
             <div className="my-32">
-                {session && session.user && <div className="flex flex-col justify-center">
-                    <h1 className="text-center text-white text-3xl font-bold">{user.name}'s Profile</h1>
+                {session?.user && <div className="flex flex-col justify-center">
+                    <h1 className="text-center text-white text-3xl font-bold">{session.user.name}'s Profile</h1>
                     <input name="email" value={session.user.email}
                            className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[50%] my-5"
                            placeholder="Name" type="email" id=""/>

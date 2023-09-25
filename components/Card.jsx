@@ -65,7 +65,7 @@ const Card = () => {
         <div className='w-full flex items-center texxt-center flex-col py-36 px-10'>
             <h2 className="text-white font-black md:text-[60px] sm:text-[50px]  text-[30px] pb-4">Prizes and
                 Benefits.</h2>
-            <h2 className="text-[#FFFF00] font-black text-[20px] pb-6">Prizes worth ₹5,000 and exclusive access to a
+            <h2 className="text-[#FFFF00] font-black text-[20px] pb-6">Prizes worth ₹15,000 and exclusive access to a
                 galaxy of benefits</h2>
             <div className='flex gap-6 flex-wrap justify-center'>
                 {benefit.map((benefit, i) => (

@@ -4,9 +4,12 @@ import {signIn, signOut, useSession, getProviders} from "next-auth/react";
 import Image from "@node_modules/next/image";
 import Tasks from "@/components/Dashboard/User/Tasks";
 import Referrals from "@/components/Dashboard/User/Referrals";
+import {useRouter} from "@node_modules/next/navigation";
+
 
 
 const Home = () => {
+    const router = useRouter()
     const [count, setCount] = React.useState(0);
     const {data: session} = useSession();
 
@@ -21,7 +24,11 @@ const Home = () => {
 
         console.log(session?.user)
         if (session?.user?.type == "admin") {
-            window.location.replace('/admin')
+            router.push('/admin')
+        }
+
+        if(!session){
+            router.push('/')
         }
     }, [session])
 
@@ -64,7 +71,9 @@ const Home = () => {
                                 Referrals
                             </div>
 
-                            <div onClick={() => console.log("logout")}
+                            <div onClick={() => {
+                                signOut({callbackUrl: '/'})
+                            }}
                                  className="text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-red-900 ease-in-out">
                                 Logout
                             </div>
@@ -108,7 +117,9 @@ const Home = () => {
                                 Referrals
                             </div>
 
-                            <div onClick={() => console.log("logout")}
+                            <div onClick={() => {
+                                signOut({callbackUrl: '/'})
+                            }}
                                  className="text-white p-3 w-full rounded-[10px] cursor-pointer m-2 hover:bg-red-900 ease-in-out">
                                 Logout
                             </div>
