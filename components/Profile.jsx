@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {useSession} from 'next-auth/react'
-const Profile = () => {
+const Profile = ({user}) => {
     const { data: session } = useSession();
 
     if (!user) {
