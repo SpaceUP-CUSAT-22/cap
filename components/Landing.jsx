@@ -50,7 +50,7 @@ const Landing = () => {
                                         onClick={() => {
                                             signIn(provider.id);
                                         }}
-                                        className='z-[9999] w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
+                                        className=' w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
                                     >
                                         Sign in
                                     </button>
@@ -61,7 +61,7 @@ const Landing = () => {
                         <button onClick={handleDashboardClick}
                             type='button'
 
-                            className='z-[9999] w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
+                            className=' w-32 py-2 mt-4 bg-primary font-medium text-[16px] text-white border border-white hover:bg-white hover:text-primary transition duration-300 ease-in-out rounded rounded-3xl'
                         >
                             Dashboard
                         </button>

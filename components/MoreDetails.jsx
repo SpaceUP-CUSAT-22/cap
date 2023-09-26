@@ -41,11 +41,11 @@ const MoreDetails = () => {
         <div className="my-32">
             <div className="flex flex-col justify-center">
                 <h1 className="text-center text-white text-3xl font-bold">Enter more details</h1>
-                <input name="name" value={formData.name} onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Name" type="text" id="" />
-                <input name="phone"  onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Phone number" type="text" id="" />
-                <input name="uni" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="College/University Name" type="text" id="" />
-                <input name="branch" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Branch" type="text" id="" />
-                <input name="yog" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Year of graduation" type="number" id="" />
+                <input name="name" value={formData.name} onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Name" type="text" id="" required/>
+                <input name="phone"  onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Phone number" type="text" id="" required/>
+                <input name="uni" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="College/University Name" type="text" id="" required/>
+                <input name="branch" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Branch" type="text" id="" required/>
+                <input name="yog" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Year of graduation" type="number" id="" required/>
                 <button onClick={() => handleSubmit(session.user.id)} className="bg-violet-500 hover:bg-violet-800 w-[30%] m-auto text-white rounded-[15px] my-10 px-5 py-3">Continue</button>
             </div>
         </div>
