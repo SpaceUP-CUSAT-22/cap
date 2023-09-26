@@ -14,9 +14,6 @@ const Home = () => {
 
   React.useEffect(() => {
     if(session?.user.type == "user"){
-      router.push('/cap')
-    }
-    if(!session){
       router.push('/')
     }
   }, [session])
