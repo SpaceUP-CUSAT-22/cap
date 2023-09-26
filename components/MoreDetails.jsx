@@ -10,6 +10,8 @@ const MoreDetails = () => {
 
     const { data: session } = useSession()
 
+    const [error, setError] = React.useState(null)
+
     const [formData, setFormData] = React.useState({
         name: session.user.name,
         phone: session.user.phone || '',
@@ -29,9 +31,21 @@ const MoreDetails = () => {
     const handleSubmit = async(id) => {
         try {
             console.log(formData)
-            const res = await axios.post('/api/users', {formData, id})
-            if(res.status === 200){
-                router.push('/cap')
+            if(!formData.phone){
+                setError('Phone is required')
+            }else if(!formData.uni){
+                setError('University is required')
+            }else if(!formData.branch){
+                setError('Branch is required')
+            }else if(!formData.yog){
+                setError('Year of graduation is required')
+            }else{
+                setError(null)
+                const res = await axios.post('/api/users', {formData, id})
+                if(res.status === 200){
+                    router.push('/cap')
+                    // console.log('done')
+                }
             }
         } catch (error) {
             console.log(error)
@@ -46,6 +60,7 @@ const MoreDetails = () => {
                 <input name="uni" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="College/University Name" type="text" id="" required/>
                 <input name="branch" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Branch" type="text" id="" required/>
                 <input name="yog" onChange={handleInputChange} className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5" placeholder="Year of graduation" type="number" id="" required/>
+                {error && <p className="font-semibold text-center text-red-500 my-10">{error}</p>}
                 <button onClick={() => handleSubmit(session.user.id)} className="bg-violet-500 hover:bg-violet-800 w-[30%] m-auto text-white rounded-[15px] my-10 px-5 py-3">Continue</button>
             </div>
         </div>
