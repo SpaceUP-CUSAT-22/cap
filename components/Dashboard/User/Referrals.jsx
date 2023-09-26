@@ -10,7 +10,7 @@ const Referrals = ({isMobile, user}) => {
     const referrelNumber = user.username.slice(0, 3) + user.id.slice(user.id.length - 5, user.id.length)
 
     const handleCopyClick = async () => {
-        await navigator.clipboard.writeText("1234567")
+        await navigator.clipboard.writeText(referrelNumber)
     }
 
     return (
