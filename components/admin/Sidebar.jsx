@@ -53,6 +53,13 @@ const Sidebar = () => {
                     <ListItem className="text-white text-xl my-5 hover:bg-slate-500 px-3 py-3">
                         <Link
                             // onClick={() => setShow(show => !show)}
+                            href="/admin/view-users">
+                            View Registered Users
+                        </Link>
+                    </ListItem>
+                    <ListItem className="text-white text-xl my-5 hover:bg-slate-500 px-3 py-3">
+                        <Link
+                            // onClick={() => setShow(show => !show)}
                             href="/admin/add-task">
                             Add task
                         </Link>
