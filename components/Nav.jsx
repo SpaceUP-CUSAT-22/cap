@@ -10,15 +10,15 @@ import {AiOutlineClose } from "react-icons/ai";
 
 const navLinks = [
   {
-    id: "Home",
+    id: "/",
     title: "Home",
   },
   {
-    id: "Leaderboard",
+    id: "/leaderboard",
     title: "Leaderboard",
   },
   {
-    id: "Contact",
+    id: "/contact",
     title: "Contact",
   },
 ];
@@ -55,41 +55,46 @@ const Nav = () => {
   }, []);
 
   return (
-  <nav className={`sm:px-8 px-4 w-full flex items-center py-1 fixed top-0 z-20 ${scrolled ? "bg-primary" : "bg-transparent"}`}>
+  <nav className={`sm:px-8 px-4 flex items-center z-20 glass-effect md:mt-0 mt-5`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <div className="flex flex-row">
+        <Link href="/" className="flex flex-row">
           <Image
-            src='/assets/images/logo.png'
+            src='/assets/images/logo1.svg'
             alt='logo'
             width={100}
             height={100}
             className='object-contain'
           />
-        </div>
+        </Link>
 
 
         <ul className="list-none hidden  sm:flex flex-row items-center gap-10">
-          {navLinks.map((nav) => (
+          {navLinks.map((nav,i) => (
             <li
-              key={nav.id}
+              key={i}
               className={`${active === nav.title ? "text-white" : "text-secondary"
                 } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              <Link href={`${nav.id}`}>{nav.title}</Link>
             </li>
           ))}
           {session?.user ? (
             <div className='flex gap-3 md:gap-5'>
-              <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='black_btn'>
+              <Link href={session?.user.type == "admin" ? "/admin" : '/cap'} className='black_btn !border-white'>
                 Dashboard
               </Link>
 
-              <button type='button' onClick={signOut} className='outline_btn'>
+              <button type='button' onClick={() => {
+                setToggleDropdown(false);
+                signOut();
+              }}
+                    className='black_btn !border-white'
+                    >
                 Sign Out
               </button>
 
-              <Link href='/profile'>
+              <Link href={`/profile`}>
                 <Image
                   src={session?.user.image}
                   width={37}
@@ -102,14 +107,14 @@ const Nav = () => {
           ) : (
             <>
               {providers &&
-                Object.values(providers).map((provider) => (
+                Object.values(providers).map((provider, i) => (
                   <button
                     type='button'
-                    key={provider.name}
+                    key={i}
                     onClick={() => {
                       signIn(provider.id);
                     }}
-                    className='black_btn'
+                    className='black_btn !border-white'
                   >
                     Sign in
                   </button>
@@ -122,33 +127,49 @@ const Nav = () => {
 
         {/* Mobile Navigation */}
 
-        <div className='sm:hidden flex relative'>
+        <div className='sm:hidden  flex relative'>
           {session?.user ? (
-            <div className='flex'>
+            <div className='flex '>
+
               <Image
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className='rounded-full'
+                className='rounded-full ml-5'
                 alt='profile'
                 onClick={() => setToggleDropdown(!toggleDropdown)}
               />
 
               {toggleDropdown && (
-                <div className='dropdown'>
+                <div className='dropdown bg-primary black-gradient'>
                   <Link
-                    href='/profile'
-                    className='dropdown_link'
+                      href={`/`}
+                      className='dropdown_link !text-white'
+                      onClick={() => setToggleDropdown(false)}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                      href={session?.user.type == "admin" ? "/admin" : '/cap'}
+                      className='dropdown_link !text-white'
+                      onClick={() => setToggleDropdown(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    href={`/profile`}
+                    className='dropdown_link !text-white'
                     onClick={() => setToggleDropdown(false)}
                   >
                     My Profile
                   </Link>
+
                   <Link
-                    href={session?.user.type == "admin" ? "/admin" : '/cap'}
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
+                      href={`/leaderboard`}
+                      className='dropdown_link !text-white'
+                      onClick={() => setToggleDropdown(false)}
                   >
-                    Dashboard
+                    Leaderboard
                   </Link>
                   <button
                     type='button'
@@ -156,7 +177,7 @@ const Nav = () => {
                       setToggleDropdown(false);
                       signOut();
                     }}
-                    className='mt-5  black_btn'
+                    className='mt-3 black_btn !text-white !border-white'
                   >
                     Sign Out
                   </button>
@@ -166,18 +187,8 @@ const Nav = () => {
           ) : (
             <>
               {providers &&
-                Object.values(providers).map((provider) => (
+                Object.values(providers).map((provider, i) => (
                   <div className="sm:hidden flex flex-1 gap-3 justify-end items-center">
-                    <button
-                      type='button'
-                      key={provider.name}
-                      onClick={() => {
-                        signIn(provider.id);
-                      }}
-                      className='black_btn'
-                    >
-                      Sign in
-                    </button>
 
                     {toggle ?
                       <AiOutlineClose
@@ -192,12 +203,12 @@ const Nav = () => {
 
                     <div
                       className={`${!toggle ? "hidden" : "flex"
-                        } p-6 black-gradient  absolute top-5 bg-primary right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+                        } p-6 black-gradient z-50  absolute top-5 bg-primary right-0 mx-4 my-2 min-w-[140px] rounded-xl`}
                     >
                       <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-                        {navLinks.map((nav) => (
+                        {navLinks.map((nav, i) => (
                           <li
-                            key={nav.id}
+                            key={i}
                             className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-secondary"
                               }`}
                             onClick={() => {
@@ -205,9 +216,19 @@ const Nav = () => {
                               setActive(nav.title);
                             }}
                           >
-                            <a href={`#${nav.id}`}>{nav.title}</a>
+                            <Link href={`${nav.id}`}>{nav.title}</Link>
                           </li>
                         ))}
+                        <button
+                            type='button'
+                            key={i}
+                            onClick={() => {
+                              signIn(provider.id);
+                            }}
+                            className='bg-tranparent w-100 rounded-[50px] border-2 border-white px-3 py-2 text-white'
+                        >
+                          Sign in
+                        </button>
                       </ul>
                     </div>
                   </div>

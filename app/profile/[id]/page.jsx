@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import Profile from "@components/Profile";
+import Nav from "@components/Nav";
+import Footer from "@components/Footer";
 
 const UserProfile = ({ params }) => {
   const searchParams = useSearchParams();
@@ -23,9 +25,13 @@ const UserProfile = ({ params }) => {
   }, [params.id]);
 
   return (
-    <Profile
-      user={user}
-    />
+    <>
+      <Nav />
+      <Profile
+        user={user}
+      />
+      <Footer />
+    </>
   );
 };
 

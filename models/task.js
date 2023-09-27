@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import {Schema, model, models} from "mongoose";
 import user from "@models/user";
 
 const TaskSchema = new Schema({
@@ -35,7 +35,18 @@ const TaskSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: 'User',
         default: []
-    }
+    },
+    attachments: [
+        {
+            attachment: String,
+            description: String,
+            id: {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            },
+            default: [{}]
+        },
+    ]
 })
 
 const Task = models.Task || model('Task', TaskSchema)

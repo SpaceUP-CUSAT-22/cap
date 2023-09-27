@@ -1,17 +1,20 @@
 "use client";
 import React from 'react';
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import AddTask from './add-task/page';
+import {useRouter} from "@node_modules/next/navigation";
 
 
 const Home = () => {
+  const router = useRouter()
   const [count, setCount] = React.useState(0);
   const { data: session } = useSession();
 
 
 
   React.useEffect(() => {
-    if(session.user.type == "user"){
-      window.location.replace('/cap')
+    if(session?.user.type == "user"){
+      router.push('/')
     }
   }, [session])
 
@@ -22,8 +25,8 @@ const Home = () => {
   }
 
   return (
-    <div onClick={handleCount} className='w-full flex-center flex-col'>
-      Home
+    <div onClick={handleCount}>
+      <AddTask />
     </div>
   );
 };

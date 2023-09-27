@@ -1,50 +1,58 @@
+import Link from 'next/link'
+import {useSession} from 'next-auth/react'
+const Profile = ({user}) => {
+    const { data: session } = useSession();
 
-
-const Profile = (user) => {
-
-    if (!user) {
+    if (!user && user!="") {
         return <div>Loading...</div>;
     }
 
     return (
         <div className="container mx-auto px-4">
-            <h1 className="text-3xl font-semibold mt-8 mb-4">{user.user.name}'s Profile</h1>
-            <div className="bg-white rounded-lg p-4 shadow-md">
-                <div className="mb-4">
-                    <p className="text-lg">
-                        <strong>Email:</strong> {user.user.email}
-                    </p>
-                    <p className="text-lg">
-                        <strong>Username:</strong> {user.user.username}
-                    </p>
-                    <p className="text-lg">
-                        <strong>User Type:</strong> {user.user.type}
-                    </p>
-                    {/* Add more user details as needed */}
-                </div>
-            </div>
+            <div className="my-32">
+                {session?.user && <div className="flex flex-col justify-center">
+                    <h1 className="text-center text-white text-3xl font-bold">{session.user.name}'s Profile</h1>
+                    <input name="email" value={session.user.email}
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
+                           placeholder="Name" type="email" id=""/>
+                    <input name="phone" value={session.user.phone}
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
+                           placeholder="Phone number" type="text" id=""/>
+                    <input name="uni" value={session.user.uni}
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
+                           placeholder="College/University Name" type="text" id=""/>
+                    <input name="branch" value={session.user.branch}
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
+                           placeholder="Branch" type="text" id=""/>
+                    <input name="yog" value={session.user.yog}
+                           className="m-auto text-white pl-3 py-5 rounded-[15px] bg-transparent border-2 w-[90%] md:w-[50%] my-5"
+                           placeholder="Year of graduation" type="number" id=""/>
+                    <Link href="/"
+                          className="bg-violet-500 text-center hover:bg-violet-800 w-[30%] m-auto text-white rounded-[15px] my-10 px-5 py-3">Continue</Link>
+                </div>}
+        </div>
 
-            {user.user.type === 'user' && (
+            {user.type === 'user' && (
                 <>
                     <h2 className="text-2xl font-semibold mt-8 mb-4">Tasks</h2>
-                    {user.user.tasks && (
+                    {user.tasks && (
                         <div>
-                            {user.user.tasks.completed.length > 0 && (
+                            {user.tasks.completed.length > 0 && (
                                 <div className="mb-4">
                                     <h3 className="text-xl font-semibold">Completed Tasks</h3>
                                     <ul className="list-disc pl-4">
-                                        {user.user.tasks.completed.map((task) => (
+                                        {user.tasks.completed.map((task) => (
                                             <li key={task._id}>{task.name}</li>
                                         ))}
                                     </ul>
                                 </div>
                             )}
 
-                            {user.user.tasks.pending.length > 0 && (
+                            {user.tasks.pending.length > 0 && (
                                 <div>
                                     <h3 className="text-xl font-semibold">Pending Tasks</h3>
                                     <ul className="list-disc pl-4">
-                                        {user.user.tasks.pending.map((task) => (
+                                        {user.tasks.pending.map((task) => (
                                             <li key={task._id}>{task}</li>
                                         ))}
                                     </ul>

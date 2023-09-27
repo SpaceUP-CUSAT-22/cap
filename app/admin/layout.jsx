@@ -8,20 +8,20 @@ export const metadata = {
 };
 
 const AddAdminLayout = ({ children }) => (
-  <html lang='en'>
-    <body>
-      <Provider>
-        <main className=''>
-          <div className="grid grid-cols-6">
+  <div className="bg-white">
+    <Provider>
+      <main className=''>
+        <div className="grid grid-cols-6 ">
+          <div className="fixed top-0">
             <Sidebar />
-            <div className="col-span-5 py-10">
-              {children}
-            </div>
           </div>
-        </main>
-      </Provider>
-    </body>
-  </html>
+          <div className="col-span-5 py-10 overscroll-y-auto">
+            {children}
+          </div>
+        </div>
+      </main>
+    </Provider>
+  </div>
 );
 
 export default AddAdminLayout;
