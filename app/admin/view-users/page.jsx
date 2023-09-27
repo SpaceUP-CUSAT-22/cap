@@ -28,7 +28,8 @@ const ViewUsers = () => {
                     <h3>{user.phone}</h3>
                     <h3>{user.email}</h3>
                     <h3>{user.year}</h3>
-                    <h3>{user.branch}</h3>
+
+<h3>{user.uni}</h3>                    <h3>{user.branch}</h3>
                     <h3>{user.yog}</h3>
                 </div>
                 )}
