@@ -10,8 +10,8 @@ const ViewUsers = () => {
         const fetchAll = async() => {
             const res = await axios.get('/api/users')
             if(res){
-                setUsers(users)
-                console.log(users)
+                setUsers(res.data)
+                console.log(res.data)
             }
         }
 
