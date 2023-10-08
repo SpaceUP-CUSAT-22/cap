@@ -57,6 +57,17 @@ const AssignScores = () => {
         }
     }
 
+    const fetchUser = async (id) => {
+        try {
+            const res = await axios.get(`/api/users/${id}`)
+            console.log(res.data)
+            return res.data
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     if (tasks && tasks.length <= 0) {
         return (
             <h1 className='text-center text-4xl text-black'>No tasks been submitted yet!</h1>
@@ -66,7 +77,7 @@ const AssignScores = () => {
 
     return (
         <Fragment>
-            {tasks && tasks.map((task) => (
+            {users && tasks && tasks.map((task) => (
                 <div className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
                     <div className="flex justify-between">
                         <h1 className="text-xl font-bold">{task.name}</h1>
@@ -87,8 +98,15 @@ const AssignScores = () => {
                                     <h3 className='text-lg font-bold'><b>Exp Date:</b> {attachment.expirationDate}</h3>
                                 </div>
                                 <div className="my-10">
+                                    <p>{users.find(u => u._id == attachment.id)?.name}</p>
+                                    <p>{users.find(u => u._id == attachment.id)?.email}</p>
+                                    <p>{users.find(u => u._id == attachment.id)?.phone}</p>
                                     <p>{attachment.description}</p>
                                     <Image src={attachment.attachment} width="350" height="300" alt="image" className='my-5' />
+                                </div>
+                                <div className='my-10 flex jusify-around'>
+                                    <input type="text" name="" onChange={(e) => setPoints(e.target.value)} placeholder="Enter points"  id="" />
+                                    <button onClick={() => handleSubmit(attachment.id)}>Submit</button>
                                 </div>
                             </div>
                         ))}

@@ -28,6 +28,7 @@ const ViewTasks = () => {
     if (!file) {
         return;
     }
+    console.log(file)
 
     const allowedFileTypes = ['image/jpeg', 'image/png', 'video/mp4', 'application/pdf'];
     if (!allowedFileTypes.includes(file.type)) {
@@ -39,6 +40,7 @@ const ViewTasks = () => {
     reader.onload = (event) => {
         const base64Data = event.target.result;
         setFileData(base64Data);
+        console.log(base64Data)
     };
     reader.readAsDataURL(file);
 };

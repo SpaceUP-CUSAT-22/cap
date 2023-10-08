@@ -12,6 +12,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
     const [showShareText, setShowShareText] = useState(false)
     const [submissionData, setSubmissionData] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [fileData, setFileData] = React.useState()
 
     useEffect(() => {
         AOS.init();
@@ -48,6 +49,31 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
             a.click();
         }
     }
+
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+    
+        const allowedFileTypes = ['image/jpeg', 'image/png', 'video/mp4', 'application/pdf'];
+        if (!allowedFileTypes.includes(file.type)) {
+            setFileError('File type not supported. Please select an image, video, or PDF.');
+            return;
+        }
+    
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const base64Data = event.target.result;
+            setFileData(base64Data);
+            setSubmissionData({
+                ...submissionData,
+                fileData: base64Data,
+                fileName: file.name
+            })
+        };
+        reader.readAsDataURL(file);
+    };
 
     const handleSubmit = async () => {
         console.log(submissionData)
@@ -140,12 +166,8 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
                                         accept=".jpeg, .jpg, .png, .mp4, .pdf"
                                         type="file"
                                         className="absolute inset-0 opacity-0 cursor-pointer"
-                                        value={submissionData?.fileData}
-                                        onChange={(e) => setSubmissionData({
-                                            ...submissionData,
-                                            fileData: e.target.value,
-                                            fileName: e.target.files[0].name
-                                        })}
+                                        // value={submissionData?.fileData}
+                                        onChange={handleFileChange}
                                     />
                                     <p className="text-gray-400">{submissionData?.fileName}</p>
                                 </div>
@@ -233,12 +255,8 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
                                             accept=".jpeg, .jpg, .png, .mp4, .pdf"
                                             type="file"
                                             className="absolute inset-0 opacity-0 cursor-pointer"
-                                            value={submissionData?.fileData}
-                                            onChange={(e) => setSubmissionData({
-                                                ...submissionData,
-                                                fileData: e.target.value,
-                                                fileName: e.target.files[0].name
-                                            })}
+                                            // value={submissionData?.fileData}
+                                            onChange={handleFileChange}
                                         />
                                         <p className="text-gray-400">{submissionData?.fileName}</p>
                                     </div>
