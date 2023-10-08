@@ -10,7 +10,7 @@ export const POST = async(request) => {
         if (!user) {
             return new Response("User not found", { status: 404 });
         }
-        user.points += body.points
+        user.points += parseInt(body.points)
         await user.save()
         return new Response("Successfully incremented points", { status: 200 });
     }catch(err){

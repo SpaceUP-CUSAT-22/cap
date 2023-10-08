@@ -90,6 +90,10 @@ const AssignScores = () => {
                                     <p>{attachment.description}</p>
                                     <Image src={attachment.attachment} width="350" height="300" alt="image" className='my-5' />
                                 </div>
+                                <div className='my-10 flex jusify-around'>
+                                    <input type="text" name="" onChange={(e) => setPoints(e.target.value)} placeholder="Enter points"  id="" />
+                                    <button onClick={() => handleSubmit(attachment.id)}>Submit</button>
+                                </div>
                             </div>
                         ))}
                     </div>
