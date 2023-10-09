@@ -2,12 +2,6 @@ import { connectToDB } from '@utils/database';
 import Task from '@models/task';
 import User from '@models/user';
 
-export const config = {
-    api: {
-      responseLimit: false,
-    },
-  }
-
 //api end point to set the task as completed by the user
 export const POST = async (request, { params }) => {
     const body = await request.json();
