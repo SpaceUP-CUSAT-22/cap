@@ -88,6 +88,10 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
                     session,
                     description: submissionData.description,
                     fileData: submissionData.fileData
+                },
+                {
+                    compress: true,
+                    chunk: 1024 * 1024
                 })
             if(res.status == 200){
                 toast.success("Submitted successfully")
