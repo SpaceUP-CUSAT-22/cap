@@ -47,14 +47,17 @@ const AssignScores = () => {
     React.useEffect(() => {
         const fetchImages = () => {
             // const storageRef = ref(storage, '65142c8f664366ed9e1ce306/');
-            const listRef = ref(storage, 'images/');
+            const listRef = ref(storage);
 
             // Find all the prefixes and items.
             listAll(listRef)
             .then((res) => {
                 res.prefixes.forEach((folderRef) => {
-                // All the prefixes under listRef.
-                // You may call listAll() recursively on them.
+                    listAll(folderRef).then((res) => {
+                        res.items.forEach((itemRef) => {
+                            console.log(itemRef)
+                        });
+                    })
                 });
                 res.items.forEach((itemRef) => {
                 // All the items under listRef.

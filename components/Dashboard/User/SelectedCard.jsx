@@ -116,7 +116,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
         }
         try {
             // console.log(data._id, session.user.id)
-            const storageRef = ref(storage, `images/${session.user.id}/${data._id}.png`);
+            const storageRef = ref(storage, `${session.user.id}/${data._id}.png`);
             uploadBytes(storageRef, fileimg).then((snapshot) => {
                 console.log('image successfully inserted')
               });
