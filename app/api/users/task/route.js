@@ -4,11 +4,9 @@ import User from '@models/user';
 
 export const config = {
     api: {
-      bodyParser: {
-        sizeLimit: '20mb',
-      },
+      responseLimit: false,
     },
-  };
+  }
 
 //api end point to set the task as completed by the user
 export const POST = async (request, { params }) => {
