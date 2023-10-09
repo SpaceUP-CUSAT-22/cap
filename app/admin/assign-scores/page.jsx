@@ -3,6 +3,29 @@ import React, {Fragment} from 'react'
 import axios from 'axios'
 import Image from 'next/image'
 import {useSession} from 'next-auth/react'
+import { getStorage, ref, listAll } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDyEFaYIN_0ZtNxnIJ88VCe4rlBQOoFG7k",
+  authDomain: "spaceup-6bc5a.firebaseapp.com",
+  projectId: "spaceup-6bc5a",
+  storageBucket: "spaceup-6bc5a.appspot.com",
+  messagingSenderId: "749448016269",
+  appId: "1:749448016269:web:f60222fb75ae7972de8dc4",
+  measurementId: "G-QR35V6EVM2"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const storage = getStorage();
+
+// Create a reference to the root of your Firebase storage bucket.
+
 
 const AssignScores = () => {
     const {data: session} = useSession()
@@ -22,6 +45,33 @@ const AssignScores = () => {
 
 
     React.useEffect(() => {
+        const fetchImages = () => {
+            const storageRef = ref(storage, '65142c8f664366ed9e1ce306');
+            listAll(storageRef).then((res) => {
+                // Create an array of maps to store the image URLs for each user.id.
+                const imageUrls = [];
+                console.log('res', res)
+                // For each file, get the file's download URL and store it in the array of maps.
+                res.prefixes.forEach((item) => {
+                    console.log('as', prefixes)
+                  // Get the file's download URL.
+                  item.getDownloadURL().then((url) => {
+                    // Get the user.id from the file's path.
+                    const userId = item.path.split("/")[1];
+              
+                    // Add the image URL to the array of maps for the user.id.
+                    let userImages = imageUrls.find((map) => map.id === userId);
+                    if (!userImages) {
+                      userImages = { id: userId, urls: [] };
+                      imageUrls.push(userImages);
+                    }
+                    userImages.urls.push(url);
+                  });
+                });
+              
+                console.log(imageUrls)
+              });
+        }
         const fetchTasks = async () => {
             try {
                 const res = await axios.get('/api/admin/tasks')
@@ -44,6 +94,7 @@ const AssignScores = () => {
 
         fetchUsers()
         fetchTasks()
+        fetchImages()
     }, [])
 
     const handleSubmit = async (id) => {
@@ -102,7 +153,7 @@ const AssignScores = () => {
                                     <p>{users.find(u => u._id == attachment.id)?.email}</p>
                                     <p>{users.find(u => u._id == attachment.id)?.phone}</p>
                                     <p>{attachment.description}</p>
-                                    <Image src={attachment.attachment} width="350" height="300" alt="image" className='my-5' />
+                                    {/* <Image src={attachment.attachment} width="350" height="300" alt="image" className='my-5' /> */}
                                 </div>
                                 <div className='my-10 flex jusify-around'>
                                     <input type="text" name="" onChange={(e) => setPoints(e.target.value)} placeholder="Enter points"  id="" />
