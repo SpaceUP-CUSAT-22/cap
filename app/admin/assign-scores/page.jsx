@@ -46,31 +46,22 @@ const AssignScores = () => {
 
     React.useEffect(() => {
         const fetchImages = () => {
-            const storageRef = ref(storage, '65142c8f664366ed9e1ce306');
-            listAll(storageRef).then((res) => {
-                // Create an array of maps to store the image URLs for each user.id.
-                const imageUrls = [];
-                console.log('res', res)
-                // For each file, get the file's download URL and store it in the array of maps.
-                res.prefixes.forEach((item) => {
-                    console.log('as', prefixes)
-                  // Get the file's download URL.
-                  item.getDownloadURL().then((url) => {
-                    // Get the user.id from the file's path.
-                    const userId = item.path.split("/")[1];
-              
-                    // Add the image URL to the array of maps for the user.id.
-                    let userImages = imageUrls.find((map) => map.id === userId);
-                    if (!userImages) {
-                      userImages = { id: userId, urls: [] };
-                      imageUrls.push(userImages);
-                    }
-                    userImages.urls.push(url);
-                  });
+            // const storageRef = ref(storage, '65142c8f664366ed9e1ce306/');
+            const listRef = ref(storage, 'images/');
+
+            // Find all the prefixes and items.
+            listAll(listRef)
+            .then((res) => {
+                res.prefixes.forEach((folderRef) => {
+                // All the prefixes under listRef.
+                // You may call listAll() recursively on them.
                 });
-              
-                console.log(imageUrls)
-              });
+                res.items.forEach((itemRef) => {
+                // All the items under listRef.
+                });
+            }).catch((error) => {
+                // Uh-oh, an error occurred!
+            });
         }
         const fetchTasks = async () => {
             try {
