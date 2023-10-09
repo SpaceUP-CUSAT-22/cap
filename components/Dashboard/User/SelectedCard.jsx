@@ -61,6 +61,11 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
             setFileError('File type not supported. Please select an image, video, or PDF.');
             return;
         }
+        const maxFileSizeInBytes = 1024 * 1024; // 1 MB (adjust the limit as needed)
+        if (file.size > maxFileSizeInBytes) {
+            setFileError('File size exceeds the maximum limit (1MB). Please select a smaller file.');
+            return;
+        }
     
         const reader = new FileReader();
         reader.onload = (event) => {
