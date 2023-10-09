@@ -3,7 +3,7 @@ import React, {Fragment} from 'react'
 import axios from 'axios'
 import Image from 'next/image'
 import {useSession} from 'next-auth/react'
-import { getStorage, ref, listAll } from "firebase/storage";
+import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -43,29 +43,11 @@ const AssignScores = () => {
         }
     }, [session, tasks])
 
+    const [allImageUrls, setImageUrls] = React.useState([])
+
 
     React.useEffect(() => {
-        const fetchImages = () => {
-            // const storageRef = ref(storage, '65142c8f664366ed9e1ce306/');
-            const listRef = ref(storage);
-
-            // Find all the prefixes and items.
-            listAll(listRef)
-            .then((res) => {
-                res.prefixes.forEach((folderRef) => {
-                    listAll(folderRef).then((res) => {
-                        res.items.forEach((itemRef) => {
-                            console.log(itemRef)
-                        });
-                    })
-                });
-                res.items.forEach((itemRef) => {
-                // All the items under listRef.
-                });
-            }).catch((error) => {
-                // Uh-oh, an error occurred!
-            });
-        }
+        
         const fetchTasks = async () => {
             try {
                 const res = await axios.get('/api/admin/tasks')
@@ -76,11 +58,41 @@ const AssignScores = () => {
             }
         }
 
+        async function getImageUrlMaps(users) {
+            // Create an array to store the image URL maps for each user.id.
+            const imageUrls = [];
+          
+            // Iterate over each user and get the folder reference in Firebase storage.
+            for (const user of users) {
+              const folderRef = ref(storage, user._id);
+          
+              const res = await listAll(folderRef);
+          
+              // Create an object with the `id` and `img_urls` array.
+              const imageUrlMap = {
+                id: user._id,
+                img_urls: [],
+              };
+          
+              // For each file, get the file's download URL and add it to the `img_urls` array.
+              for (const itemRef of res.items) {
+                imageUrlMap.img_urls.push(await getDownloadURL(itemRef));
+              }
+          
+              // Add the object to the `imageUrls` array.
+              imageUrls.push(imageUrlMap);
+            }
+          
+            // Return the `imageUrls` array.
+            setImageUrls(imageUrls);
+          }
+
         const fetchUsers = async () => {
             try {
                 const res = await axios.get('/api/users')
                 setUsers(res.data)
                 console.log(res.data)
+                getImageUrlMaps(res.data)
             } catch (error) {
                 console.log(error)
             }
@@ -88,7 +100,6 @@ const AssignScores = () => {
 
         fetchUsers()
         fetchTasks()
-        fetchImages()
     }, [])
 
     const handleSubmit = async (id) => {
@@ -122,8 +133,8 @@ const AssignScores = () => {
 
     return (
         <Fragment>
-            {users && tasks && tasks.map((task) => (
-                <div className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
+            {users && tasks && tasks.map((task,i) => (
+                <div key={i} className='bg-slate-100 shadow-lg rounded-[20px] px-5 py-5'>
                     <div className="flex justify-between">
                         <h1 className="text-xl font-bold">{task.name}</h1>
                         <h3 className='text-lg font-bold'><b>Exp Date:</b> {task.expirationDate}</h3>
@@ -147,7 +158,7 @@ const AssignScores = () => {
                                     <p>{users.find(u => u._id == attachment.id)?.email}</p>
                                     <p>{users.find(u => u._id == attachment.id)?.phone}</p>
                                     <p>{attachment.description}</p>
-                                    {/* <Image src={attachment.attachment} width="350" height="300" alt="image" className='my-5' /> */}
+                                    <Image src={allImageUrls.find(a => a.id == attachment.id)?.img_urls.find(i => i.includes(task._id)) || ''} width="350" height="300" alt="image" className='my-5' />
                                 </div>
                                 <div className='my-10 flex jusify-around'>
                                     <input type="text" name="" onChange={(e) => setPoints(e.target.value)} placeholder="Enter points"  id="" />
