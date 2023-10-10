@@ -4,8 +4,33 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import {toast} from "react-hot-toast"
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDyEFaYIN_0ZtNxnIJ88VCe4rlBQOoFG7k",
+  authDomain: "spaceup-6bc5a.firebaseapp.com",
+  projectId: "spaceup-6bc5a",
+  storageBucket: "spaceup-6bc5a.appspot.com",
+  messagingSenderId: "749448016269",
+  appId: "1:749448016269:web:f60222fb75ae7972de8dc4",
+  measurementId: "G-QR35V6EVM2"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+const storage = getStorage();
 
 const desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu nunc justo. Cras in quam ullamcorper, varius neque in, sagittis enim. In malesuada non erat quis sodales. Curabitur vitae semper nisl, id pellentesque lectus. Maecenas in ex sed ipsum commodo porttitor. Sed sit amet purus in quam finibus blandit. Phasellus in est ac nisl venenatis consectetur. Vestibulum justo nulla, porttitor ut pellentesque ut, lacinia at felis. Donec nec leo dolor. Mauris consectetur nunc quis neque dignissim, a efficitur lorem ultricies.";
+
 
 const SelectedCard = ({handleClose, isMobile, data, session}) => {
 
@@ -13,6 +38,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
     const [submissionData, setSubmissionData] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [fileData, setFileData] = React.useState()
+    const [fileimg, setFile] = React.useState()
 
     useEffect(() => {
         AOS.init();
@@ -55,10 +81,16 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
         if (!file) {
             return;
         }
+        setFile(file)
     
         const allowedFileTypes = ['image/jpeg', 'image/png', 'video/mp4', 'application/pdf'];
         if (!allowedFileTypes.includes(file.type)) {
             setFileError('File type not supported. Please select an image, video, or PDF.');
+            return;
+        }
+        const maxFileSizeInBytes = 1024 * 1024; // 1 MB (adjust the limit as needed)
+        if (file.size > maxFileSizeInBytes) {
+            setFileError('File size exceeds the maximum limit (1MB). Please select a smaller file.');
             return;
         }
     
@@ -75,6 +107,7 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
         reader.readAsDataURL(file);
     };
 
+
     const handleSubmit = async () => {
         console.log(submissionData)
         if(!submissionData?.fileData){
@@ -82,12 +115,17 @@ const SelectedCard = ({handleClose, isMobile, data, session}) => {
             return
         }
         try {
+            // console.log(data._id, session.user.id)
+            const storageRef = ref(storage, `${session.user.id}/${data._id}.png`);
+            uploadBytes(storageRef, fileimg).then((snapshot) => {
+                console.log('image successfully inserted')
+              });
             const res = await axios.post('/api/users/task',
                 {
                     task: data,
                     session,
                     description: submissionData.description,
-                    fileData: submissionData.fileData
+                    fileData: "fileData"
                 })
             if(res.status == 200){
                 toast.success("Submitted successfully")
