@@ -42,7 +42,7 @@ const Page = () => {
                     <h3 className='text-white text-xl font-bold'>Name</h3>
                     <h3 className='text-white text-xl font-bold'>Points</h3>
                 </div> */}
-                {users && users.map(user => <Row id={user._id} name={user.name} points={user.points} />)}
+                {users && users.map(user => user.type == "user" && <Row id={user._id} name={user.name} points={user.points} />)}
             </div>
         </div>
     );
