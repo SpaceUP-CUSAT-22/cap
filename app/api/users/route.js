@@ -1,12 +1,6 @@
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
 
-export const config = {
-    api: {
-      responseLimit: false,
-    },
-  }
-
 
 export const GET = async (request, { params  }) => {
     try {
