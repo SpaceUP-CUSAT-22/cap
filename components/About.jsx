@@ -1,3 +1,4 @@
+"use client"
 import React, {Fragment, useEffect} from 'react';
 
 const About = () => {
