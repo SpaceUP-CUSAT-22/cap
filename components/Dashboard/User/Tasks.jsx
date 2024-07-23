@@ -47,6 +47,7 @@ const Tasks = ({isMobile, session}) => {
                                             status={task.status}
                                             image={task.attachment}
                                             description={task.description}
+                                            completed={task.completed?.includes(session.user.id)}
                                     />
                                 </div>
                             )) :

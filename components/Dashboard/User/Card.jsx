@@ -9,6 +9,7 @@ const Card = ({handleClick,
     status,
     image,
     description,
+    completed
 }) => {
 
     return (
@@ -25,8 +26,9 @@ const Card = ({handleClick,
                     <p className="text-gray-400 font-bold">{points} Points</p>
                     <p className="text-gray-400">{description.slice(0, 80)}</p>
                     <div className="flex items-center self-end rounded mt-auto px-1">
-                        <span className="text-white rounded-full p-2 bg-red-900"></span>
-                        <p className="text-gray-400 px-1">Pending</p>
+                        {completed ? <><span className="text-white rounded-full p-2 bg-green-900"></span>
+                            <p className="text-gray-400 px-1">Submitted</p></> : <><span className="text-white rounded-full p-2 bg-red-900"></span>
+                        <p className="text-gray-400 px-1">Pending</p></>}
                     </div>
                 </div>
             </div>

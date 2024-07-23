@@ -20,6 +20,14 @@ const Page = () => {
     const [users, setUsers] = React.useState([])
 
     React.useEffect(() => {
+        const fetchAll = async() => {
+            try{
+                const res = await axios.get('https://cap.spaceupcusat.org/api/users')
+                console.log('All data: ', res.data)
+            }catch(err){
+                console.log(err)
+            }
+        }
         const fetchTop = async() => {
             try{
                 const res = await axios.get('/api/users/top')
@@ -30,6 +38,7 @@ const Page = () => {
             }
         }
         fetchTop()
+        fetchAll()
     }, [])
     return (
         <div className="h-screen">

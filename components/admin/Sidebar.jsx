@@ -43,7 +43,7 @@ const Sidebar = () => {
                         Back
                     </Link>
                     <div className="flex justify-center">
-                        <Image src={logo} width="250" height="250"/>
+                        <Image src="/assets/images/logo.png" width="250" height="250"/>
                     </div>
                     <Typography variant="h5" color="white">
                         Admin Panel
