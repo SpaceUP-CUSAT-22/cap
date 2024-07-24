@@ -4,7 +4,6 @@ import React from 'react'
 import {useEffect, useState} from "react";
 import {signIn, signOut, useSession, getProviders} from "next-auth/react";
 import Image from 'next/image';
-import space from "../public/assets/images/space suit.png";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 
@@ -71,7 +70,7 @@ const Landing = () => {
 
             <div
                 className='w-full z-[-1] md:w-1/2 flex justify-center items-center top-[25%] md:top-0 md:right-0 absolute md:relative'>
-                <Image src={space} alt='landing' width={500} height={500}
+                <Image src="/assets/images/space_suit.png" alt='landing' width={500} height={500}
                        className=' floating items-center static md:top-[10px] md:top-[0]' />
             </div>
         </div>
