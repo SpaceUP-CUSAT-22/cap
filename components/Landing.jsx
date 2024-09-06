@@ -36,7 +36,7 @@ const Landing = () => {
                     Campus Ambassador
                 </h2>
                 <p className="text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] mt-2 text-white-100">
-                    Be the Messiah for <span className='text-red-700 font-bold'>Space Up </span><br
+                    Be the Cosmonaut of <span className='text-red-700 font-bold'>Space Up </span><br
                     className='sm:block hidden'/>
                 </p>
                 {!session?.user ? (
