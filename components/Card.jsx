@@ -69,7 +69,7 @@ const Card = () => {
             <h2 className="text-[#FFFF00] font-black text-[20px] pb-6">Prizes worth ₹15,000 and exclusive access to a
                 galaxy of benefits</h2>
             <div className={'flex justify-center mb-[50px]'}>
-                <Image width={'250'} height={'230'} src={'/assets/images/prizes.webp'} />
+                <Image width={'250'} height={'230'} src={'/assets/images/gold.png'} />
             </div>
             <div className='flex gap-6 flex-wrap justify-center'>
                 {benefit.map((benefit, i) => (
