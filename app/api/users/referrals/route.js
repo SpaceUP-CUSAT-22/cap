@@ -47,7 +47,7 @@ export async function POST(request) {
 
         if (isValid) {
             return NextResponse.json(
-                { isValid: true, message: "Valid referral code! ₹50 discount applied." },
+                { isValid: true, message: "Valid referral code! 10% discount applied." },
                 { status: 200, headers: corsHeaders }
             );
         } else {
